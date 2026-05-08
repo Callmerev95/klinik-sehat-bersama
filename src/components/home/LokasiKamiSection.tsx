@@ -1,0 +1,170 @@
+import Link from 'next/link';
+import { ChevronRight, Clock, Mail, MapPin, Phone } from 'lucide-react';
+
+import { cn } from '@/lib/utils';
+
+/**
+ * Embed peta cabang utama (Labuhan Badas).
+ * Ganti dengan kode embed resmi Google Maps (Share → Embed) bila sudah tersedia.
+ */
+const MAP_EMBED_SRC =
+  'https://maps.google.com/maps?q=Klinik+Alsakha+Medica,+Jl.+Garuda+No.138,+Labuhan+Badas,+Sumbawa+Besar,+Nusa+Tenggara+Barat&hl=id&z=16&output=embed';
+
+/** Samakan dengan Navbar / Footer saat nomor & email final. */
+const PHONE_DISPLAY = '+62 823-4256-1752';
+const PHONE_HREF = 'tel:+6282342561752';
+const EMAIL = 'klinik.alsakha.medica90@gmail.com';
+
+const CABANG_UTAMA_LINE =
+  'Jl. Garuda No.138, Labuhan Badas, Sumbawa Besar — Klinik Alsakha Medica';
+
+export function LokasiKamiSection() {
+  return (
+    <section
+      id="lokasi-kami"
+      className="section-padding scroll-mt-20 border-t border-slate-100 bg-linear-to-b from-slate-50/80 to-white sm:scroll-mt-24"
+      aria-labelledby="lokasi-kami-heading"
+    >
+      <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
+        <header className="mx-auto max-w-2xl text-center">
+          <h2
+            id="lokasi-kami-heading"
+            className="text-balance text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl md:text-[2rem]"
+          >
+            Lokasi &amp; Kontak
+          </h2>
+          <p className="mt-3 text-pretty text-base leading-relaxed text-slate-600 sm:mt-4 sm:text-lg">
+            Temukan lokasi kami dan hubungi tim Alsakha Medica dengan mudah. Kami siap melayani Anda
+            kapan saja.
+          </p>
+        </header>
+
+        <div className="mt-10 grid grid-cols-1 gap-8 lg:mt-12 lg:grid-cols-2 lg:items-stretch lg:gap-10 xl:gap-12">
+          {/* Peta */}
+          <div className="flex min-h-0 flex-col">
+            <div className="mb-3 flex shrink-0 items-start gap-3 text-left sm:mb-3.5">
+              <span className="mt-0.5 flex size-10 shrink-0 items-center justify-center rounded-xl bg-[#00A88E]/10 text-[#00A88E]">
+                <MapPin className="size-4.5" strokeWidth={2} aria-hidden />
+              </span>
+              <div className="min-w-0 pt-0.5">
+                <p className="text-[0.6875rem] font-semibold uppercase tracking-[0.12em] text-[#00A88E]">
+                  Cabang utama
+                </p>
+                <p className="mt-1 text-sm font-medium leading-snug text-slate-800 sm:text-[0.9375rem]">
+                  {CABANG_UTAMA_LINE}
+                </p>
+              </div>
+            </div>
+            <div
+              className={cn(
+                'flex min-h-55 flex-1 flex-col overflow-hidden rounded-2xl border border-slate-200/80 bg-white shadow-[0_1px_3px_rgb(15_23_42/0.06)]',
+                'sm:min-h-60 lg:min-h-0'
+              )}
+            >
+              <div
+                className={cn(
+                  'relative w-full flex-1 overflow-hidden',
+                  'min-h-55 max-h-[min(19rem,62vw)] sm:min-h-60 sm:max-h-[min(21rem,56vw)]',
+                  'lg:max-h-none lg:min-h-0 lg:h-full'
+                )}
+              >
+                <iframe
+                  title="Peta Google Maps — Klinik Alsakha Medica, Labuhan Badas, Sumbawa Besar"
+                  src={MAP_EMBED_SRC}
+                  className="absolute inset-0 h-full w-full border-0"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  allowFullScreen
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* Kontak & jam */}
+          <aside
+            className="flex h-full min-h-0 flex-col rounded-2xl border border-slate-200/80 bg-white p-6 shadow-[0_1px_3px_rgb(15_23_42/0.06)] sm:p-7"
+            aria-labelledby="lokasi-kontak-heading"
+          >
+            <div className="border-b border-slate-100 pb-5">
+              <h3
+                id="lokasi-kontak-heading"
+                className="text-lg font-semibold tracking-tight text-slate-900"
+              >
+                Kontak
+              </h3>
+              <p className="mt-1.5 text-sm leading-relaxed text-slate-500">
+                Cabang utama — telepon, dan email.
+              </p>
+            </div>
+
+            <ul className="mt-5 flex flex-col gap-4 text-sm sm:text-[0.9375rem]" role="list">
+              <li>
+                <a
+                  href={PHONE_HREF}
+                  className="group flex gap-3 rounded-xl py-0.5 text-slate-700 transition-colors hover:text-[#00A88E] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00A88E]/40 focus-visible:ring-offset-2"
+                >
+                  <span className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-[#00A88E]/10 text-[#00A88E]">
+                    <Phone className="size-4" strokeWidth={2} aria-hidden />
+                  </span>
+                  <span className="min-w-0">
+                    <span className="block text-[0.6875rem] font-semibold uppercase tracking-wide text-slate-500">
+                      Telepon
+                    </span>
+                    <span className="mt-0.5 font-medium text-slate-900">{PHONE_DISPLAY}</span>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href={`mailto:${EMAIL}`}
+                  className="group flex gap-3 rounded-xl py-0.5 text-slate-700 transition-colors hover:text-[#00A88E] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00A88E]/40 focus-visible:ring-offset-2"
+                >
+                  <span className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-[#00A88E]/10 text-[#00A88E]">
+                    <Mail className="size-4" strokeWidth={2} aria-hidden />
+                  </span>
+                  <span className="min-w-0">
+                    <span className="block text-[0.6875rem] font-semibold uppercase tracking-wide text-slate-500">
+                      Email
+                    </span>
+                    <span className="mt-0.5 break-all font-medium text-slate-900">{EMAIL}</span>
+                  </span>
+                </a>
+              </li>
+              <li className="border-t border-slate-100 pt-4">
+                <div className="flex gap-3">
+                  <span className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-[#00A88E]/10 text-[#00A88E]">
+                    <Clock className="size-4" strokeWidth={2} aria-hidden />
+                  </span>
+                  <div className="min-w-0 space-y-2.5 text-slate-600">
+                    <div className="rounded-xl border border-[#00A88E]/20 bg-[#00A88E]/10 px-3 py-2">
+                      <p className="text-[0.6875rem] font-bold uppercase tracking-wide text-[#00A88E]">
+                        IGD &amp; Emergency
+                      </p>
+                      <p className="mt-0.5 text-sm font-medium text-slate-800">24 jam</p>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+
+            <div className="mt-auto border-t border-slate-100 pt-5">
+              <Link
+                href="/tentang-kami/#sejarah-heading"
+                className={cn(
+                  'inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl',
+                  'text-base font-semibold text-[#00A88E]',
+                  'border border-[#00A88E]/30 bg-[#00A88E]/5',
+                  'transition-all duration-200',
+                  'hover:border-[#00A88E]/60 hover:bg-[#00A88E]/10 hover:-translate-y-0.5'
+                )}
+              >
+                Lihat Semua Cabang
+                <ChevronRight className="w-5 h-5" />
+              </Link>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+  );
+}

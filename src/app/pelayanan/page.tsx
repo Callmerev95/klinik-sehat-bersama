@@ -1,0 +1,371 @@
+'use client';
+
+import type { LucideIcon } from 'lucide-react';
+import {
+  Activity,
+  Baby,
+  BedDouble,
+  CheckCircle2,
+  Ear,
+  Footprints,
+  HeartPulse,
+  Microscope,
+  Pill,
+  ScanLine,
+  ShieldCheck,
+  Siren,
+  Stethoscope,
+} from 'lucide-react';
+import { motion } from 'framer-motion';
+
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
+import { cn } from '@/lib/utils';
+
+/** Sama dengan halaman Tentang Kami — ringan: hanya opacity + translateY singkat. */
+const ease = [0.22, 1, 0.36, 1] as const;
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 24 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.55, ease },
+  },
+};
+
+const stagger = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.1, delayChildren: 0.08 },
+  },
+};
+
+const HERO_IMAGE = '/images/Hero/Hero-Pelayanan.webp';
+
+type PelayananItem = {
+  readonly id: string;
+  readonly icon: LucideIcon;
+  readonly title: string;
+  readonly description: string;
+  readonly highlights: readonly string[];
+  readonly featured?: boolean;
+  readonly badge?: string;
+};
+
+const LAYANAN: readonly PelayananItem[] = [
+  {
+    id: 'medical-check-up',
+    icon: Activity,
+    title: 'Medical Check-Up',
+    description:
+      'Paket pemeriksaan kesehatan lengkap untuk skrining berkala — penunjang disesuaikan standar klinik, dengan penawaran harga kompetitif (Best Price) sesuai brosur Alsakha Medica. Hasil dibahas agar Anda memahami langkah pencegahan dan tindak lanjut yang tepat.',
+    highlights: [
+      'Paket lengkap sesuai kebutuhan usia dan risiko kesehatan',
+      'Integrasi dengan laboratorium & penunjang di klinik',
+      'Interpretasi hasil oleh tenaga medis profesional',
+    ],
+    featured: true,
+    badge: 'Best Price',
+  },
+  {
+    id: 'pemeriksaan-umum',
+    icon: Stethoscope,
+    title: 'Pemeriksaan Umum',
+    description:
+      'Layanan konsultasi dan pemeriksaan dokter umum untuk keluhan harian, pengobatan dasar, surat keterangan, serta rujukan bila diperlukan penanganan lebih lanjut.',
+    highlights: [
+      'Anamnesis dan pemeriksaan fisik menyeluruh',
+      'Manajemen penyakit akut dan kronis stabil',
+      'Rujukan terstandar ke layanan spesialis atau fasilitas lain',
+    ],
+  },
+  {
+    id: 'igd',
+    icon: Siren,
+    title: 'IGD 24 Jam & Emergency',
+    description:
+      'Unit gawat darurat siaga 24 jam untuk kegawatan medis, penanganan pertama yang cepat, stabilisasi pasien, dan koordinasi tindak lanjut yang aman.',
+    highlights: [
+      'Akses darurat kapan pun dibutuhkan',
+      'Tim tenaga medis terlatih untuk kondisi emergensi',
+      'Alur rujukan jelas jika perlu penanganan lanjutan',
+    ],
+  },
+  {
+    id: 'laboratorium',
+    icon: Microscope,
+    title: 'Laboratorium',
+    description:
+      'Pemeriksaan darah, urine, dan tes laboratorium lain dengan alur pre-analitik terkontrol, akurasi terjaga, dan hasil yang dapat dipertanggungjawabkan secara klinis.',
+    highlights: [
+      'Identifikasi pasien & label spesimen ketat',
+      'Estimasi waktu hasil diinformasikan di awal',
+      'Dukung diagnosis dan monitoring terapi',
+    ],
+  },
+  {
+    id: 'usg',
+    icon: ScanLine,
+    title: 'USG',
+    description:
+      'Pelayanan ultrasonografi (USG) sebagai penunjang diagnosis non-invasif sesuai indikasi medis dan rujukan dokter, dengan privasi dan kenyamanan pasien terjaga.',
+    highlights: [
+      'Persiapan pemeriksaan dijelaskan sebelum tindakan',
+      'Hasil terdokumentasi untuk evaluasi klinis',
+      'Ruang pemeriksaan yang nyaman dan steril',
+    ],
+  },
+  {
+    id: 'rawat-inap',
+    icon: BedDouble,
+    title: 'Rawat Inap',
+    description:
+      'Fasilitas perawatan dengan observasi tenaga medis untuk kondisi yang membutuhkan pemantauan, terapi, dan pendampingan lebih intensif di lingkungan klinik.',
+    highlights: [
+      'Monitoring berkala sesuai protokol medis',
+      'Koordinasi obat, nutrisi, dan tindakan medis',
+      'Edukasi pasien dan keluarga selama perawatan',
+    ],
+  },
+  {
+    id: 'audiometri',
+    icon: Ear,
+    title: 'Audiometri',
+    description:
+      'Pemeriksaan fungsi pendengaran untuk skrining gangguan dengar, evaluasi keluhan tuli ringan, atau penunjang diagnosis sesuai indikasi dokter.',
+    highlights: [
+      'Prosedur terstandar dengan penjelasan ke pasien',
+      'Hasil dapat digunakan untuk rujukan atau tindak lanjut',
+      'Tenaga yang terbiasa dengan alat audiometri',
+    ],
+  },
+  {
+    id: 'treadmill-test',
+    icon: Footprints,
+    title: 'Treadmill Test',
+    description:
+      'Uji beban jantung (stress test) dengan treadmill untuk menilai respons kardiovaskular saat aktivitas, sesuai indikasi dan persetujuan medis.',
+    highlights: [
+      'Persiapan dan kontraindikasi dinilai sebelum pemeriksaan',
+      'Pemantauan selama prosedur berlangsung',
+      'Laporan untuk evaluasi dokter jantung atau interna',
+    ],
+  },
+  {
+    id: 'ekg',
+    icon: HeartPulse,
+    title: 'Rekam Jantung (EKG)',
+    description:
+      'Perekaman aktivitas listrik jantung untuk mendeteksi aritmia, iskemia, atau kelainan lain sebagai penunjang diagnosis dan monitoring.',
+    highlights: [
+      'Pelayanan cepat dengan alat terkalibrasi',
+      'Hasil siap untuk dibawa ke konsultasi lanjutan',
+      'Mendukung skrining kardiovaskular pada MCU',
+    ],
+  },
+  {
+    id: 'farmasi',
+    icon: Pill,
+    title: 'Farmasi Klinik',
+    description:
+      'Penyiapan obat sesuai resep, konseling penggunaan obat, serta informasi interaksi dan efek samping agar pengobatan aman dan patuh.',
+    highlights: [
+      'Konseling dosis, jadwal minum, dan penyimpanan',
+      'Substitusi obat sesuai kebijakan dan resep',
+      'Stok terkelola untuk kebutuhan resep klinik',
+    ],
+  },
+  {
+    id: 'kia-persalinan',
+    icon: Baby,
+    title: 'KIA & Persalinan',
+    description:
+      'Pelayanan kesehatan ibu dan anak, kehamilan, persalinan, serta masa nifas dengan pendampingan tenaga kesehatan berpengalaman.',
+    highlights: [
+      'ANC dan pemantauan kehamilan terjadwal',
+      'Persalinan dengan protokol keselamatan',
+      'Edukasi pasca salin dan perawatan neonatus dasar',
+    ],
+  },
+  {
+    id: 'bpjs-kesehatan',
+    icon: ShieldCheck,
+    title: 'Asuransi BPJS Kesehatan',
+    description:
+      'Kerja sama layanan sesuai ketentuan BPJS Kesehatan untuk memberikan akses pelayanan kesehatan yang terjangkau, berkualitas, dan merata bagi semua peserta. Melayani pemeriksaan umum, laboratorium, dan penunjang diagnosis dengan koordinasi rujukan yang jelas.',
+    highlights: [
+      'Informasi alur pendaftaran dan berkas yang diperlukan',
+      'Koordinasi dengan unit terkait di klinik',
+      'Transparansi mengenai jenis layanan kesehatan yang tercakup',
+    ],
+  },
+  {
+    id: 'bpjs-ketenagakerjaan',
+    icon: ShieldCheck,
+    title: 'Asuransi BPJS Ketenagakerjaan',
+    description:
+      'Layanan khusus BPJS Ketenagakerjaan untuk perlindungan kesehatan dan keselamatan kerja karyawan. Menangani pemeriksaan kesehatan kerja, penanganan penyakit akibat kerja, dan koordinasi rujukan dengan standar keselamatan kerja yang berlaku.',
+    highlights: [
+      'Pemeriksaan kesehatan kerja (medical check-up karyawan)',
+      'Penanganan penyakit dan cedera akibat kerja',
+      'Koordinasi administrasi dan klaim BPJS Ketenagakerjaan',
+    ],
+  },
+  {
+    id: 'free-disabilities-care',
+    icon: CheckCircle2,
+    title: 'Free Disabilities Care',
+    description:
+      'Program layanan kesehatan khusus untuk pasien dengan kondisi disabilitas, memastikan akses penuh ke fasilitas kesehatan yang inklusif, nyaman, dan berkelanjutan sesuai kebutuhan.',
+    highlights: [
+      'Skrining dan identifikasi kebutuhan khusus pasien dengan disabilitas',
+      'Fasilitas aksesibel dan koordinasi layanan yang disesuaikan',
+      'Pendampingan berkelanjutan untuk keselamatan dan kenyamanan pasien',
+    ],
+  },
+];
+
+export default function PelayananPage() {
+  return (
+    <div className="min-h-0 bg-white">
+      <section
+        className="relative isolate flex min-h-[52vh] w-full items-end overflow-hidden md:min-h-[58vh] md:items-center"
+        aria-labelledby="pelayanan-hero-heading"
+      >
+        <div
+          className="absolute inset-0 -z-20 scale-105 bg-slate-900 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: `url('${HERO_IMAGE}')` }}
+          aria-hidden
+        />
+        <div
+          className="absolute inset-0 -z-10 bg-linear-to-br from-[#003d36]/88 via-[#00A88E]/50 to-slate-900/75"
+          aria-hidden
+        />
+        <div className="absolute inset-0 -z-10 bg-black/25" aria-hidden />
+
+        <div className="relative z-10 mx-auto w-full max-w-7xl px-5 pb-14 pt-28 sm:px-6 md:py-24 lg:px-8">
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={stagger}
+            className="mx-auto max-w-3xl text-center md:mx-0 md:text-left"
+          >
+            <motion.p
+              variants={fadeUp}
+              className="text-sm font-medium uppercase tracking-[0.16em] text-[#a8f0e4]"
+            >
+              Alsakha Medica
+            </motion.p>
+            <motion.h1
+              id="pelayanan-hero-heading"
+              variants={fadeUp}
+              className="mt-3 text-balance text-4xl font-bold tracking-tight text-white sm:text-5xl md:text-6xl"
+            >
+              Pelayanan Kami
+            </motion.h1>
+            <motion.p
+              variants={fadeUp}
+              className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-white/90 sm:text-xl md:mx-0"
+            >
+              Informasi layanan resmi Klinik Alsakha Medica — terpadu, transparan, dan siap mendampingi Anda
+              dari pemeriksaan rutin hingga penanganan darurat.
+            </motion.p>
+            <motion.p
+              variants={fadeUp}
+              className="mt-6 inline-flex rounded-full border border-white/25 bg-white/10 px-4 py-2 text-sm font-medium text-white/95 backdrop-blur-sm"
+            >
+              &ldquo;Setia Dikala Sehat – Peduli Dikala Sakit&rdquo;
+            </motion.p>
+          </motion.div>
+        </div>
+      </section>
+
+      <section
+        className="section-padding border-t border-slate-100 bg-slate-50/80"
+        aria-labelledby="pelayanan-daftar-heading"
+      >
+        <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
+          <h2 id="pelayanan-daftar-heading" className="sr-only">
+            Daftar layanan klinik
+          </h2>
+          <ul className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8 lg:grid-cols-3">
+            {LAYANAN.map((item, i) => {
+              const Icon = item.icon;
+              return (
+                <motion.li
+                  key={item.id}
+                  id={item.id}
+                  className="h-full scroll-mt-24"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: '-30px' }}
+                  transition={{ duration: 0.45, ease, delay: i * 0.06 }}
+                >
+                  <Card
+                    className={cn(
+                      'card-hover flex h-full flex-col gap-0 border border-slate-200/90 bg-white py-0 shadow-none ring-0',
+                      item.featured &&
+                      'border-amber-300/80 ring-2 ring-[#00A88E]/15 ring-offset-0'
+                    )}
+                  >
+                    <CardHeader className="gap-4 border-b border-slate-100 px-6 pb-5 pt-6 sm:px-7 sm:pt-7">
+                      {item.badge ? (
+                        <div className="flex flex-wrap items-center gap-2">
+                          <span
+                            className={cn(
+                              'inline-flex rounded-lg bg-linear-to-r from-red-600 via-orange-500 to-amber-500',
+                              'px-3 py-1 text-xs font-extrabold uppercase tracking-wide text-white',
+                              'shadow-sm shadow-orange-900/20'
+                            )}
+                          >
+                            {item.badge}
+                          </span>
+                        </div>
+                      ) : null}
+                      <div
+                        className="flex size-12 items-center justify-center rounded-xl bg-[#00A88E]/10 text-[#00A88E]"
+                        aria-hidden
+                      >
+                        <Icon className="size-6 shrink-0" strokeWidth={2} />
+                      </div>
+                      <CardTitle className="font-heading text-lg font-semibold leading-snug tracking-tight text-slate-900 sm:text-xl">
+                        {item.title}
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent className="flex flex-1 flex-col px-6 pb-6 pt-5 sm:px-7 sm:pb-7">
+                      <p className="text-[0.9375rem] leading-relaxed text-slate-600">{item.description}</p>
+                      <p className="mt-5 text-xs font-semibold uppercase tracking-wide text-slate-500">
+                        Keunggulan layanan
+                      </p>
+                      <ul className="mt-3 flex flex-col gap-2.5" role="list">
+                        {item.highlights.map((point) => (
+                          <li
+                            key={point}
+                            className="flex gap-2.5 text-sm leading-snug text-slate-700"
+                          >
+                            <CheckCircle2
+                              className="mt-0.5 size-4.5 shrink-0 text-[#00A88E]"
+                              strokeWidth={2}
+                              aria-hidden
+                            />
+                            <span>{point}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </CardContent>
+                  </Card>
+                </motion.li>
+              );
+            })}
+          </ul>
+        </div>
+      </section>
+    </div>
+  );
+}
