@@ -34,9 +34,9 @@ const EMAIL = 'klinik.alsakha.medica90@gmail.com';
 const ADDRESS = 'Jl. Garuda No.138, Labuan Sumbawa, Labuhan Badas, Kabupaten Sumbawa, Nusa Tenggara Bar. 84316, Indonesia';
 
 const SOCIAL_LINKS = [
-  { name: 'Instagram', href: 'https://www.instagram.com/', Icon: IconInstagram },
-  { name: 'TikTok', href: 'https://www.tiktok.com/', Icon: IconTikTok },
-  { name: 'Facebook', href: 'https://www.facebook.com/', Icon: IconFacebook },
+  { name: 'Instagram', href: 'https://www.instagram.com/alsakha.medica?igsh=a2hudmZqdGZ6YWJw', Icon: IconInstagram },
+  { name: 'TikTok', href: 'https://www.tiktok.com/@klinik.alsakha.medica?_r=1&_t=ZS-96D9OfaY3Qg', Icon: IconTikTok },
+  { name: 'Facebook', href: 'https://www.facebook.com/share/1Ggk8e88KL/', Icon: IconFacebook },
 ] as const;
 
 const PARTNERS = [
