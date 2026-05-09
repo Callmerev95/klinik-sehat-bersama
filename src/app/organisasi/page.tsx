@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
+import { useState } from 'react';
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -122,7 +123,7 @@ const TEAM_MEMBERS: TeamMember[] = [
     name: 'Fiqri',
     position: 'Cleaning Service',
     specialization: 'Layanan Kebersihan & Sanitasi',
-    image: 'https://images.unsplash.com/photo-1559839734033-6461ffad8d80?w=600&h=600&fit=crop',
+    image: '',
     tier: 'operational',
   },
 ];
@@ -138,6 +139,15 @@ interface TeamCardProps {
 
 // Team Card Component - Match Partner Card Design
 function TeamCard({ member, index }: TeamCardProps) {
+  const [imageError, setImageError] = useState(false);
+  const hasImage = member.image && !imageError;
+  const initials = member.name
+    .split(' ')
+    .map((word) => word[0])
+    .join('')
+    .toUpperCase()
+    .slice(0, 2);
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 24 }}
@@ -158,15 +168,40 @@ function TeamCard({ member, index }: TeamCardProps) {
         )}
       >
         {/* Team Member Image - Portrait */}
-        <div className="relative h-full w-full overflow-hidden bg-slate-100 flex items-center justify-center" style={{ aspectRatio: '3/4' }}>
-          <Image
-            src={member.image}
-            alt={member.name}
-            fill
-            className="object-cover w-full h-full"
-            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-            priority={index < 3}
-          />
+        <div className="relative w-full overflow-hidden flex items-center justify-center" style={{ aspectRatio: '3/4' }}>
+          {hasImage ? (
+            <Image
+              src={member.image}
+              alt={member.name}
+              fill
+              className="object-cover w-full h-full"
+              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+              priority={index < 3}
+              onError={() => setImageError(true)}
+            />
+          ) : (
+            <div className="relative w-full h-full bg-linear-to-b from-[#00A88E]/40 via-[#00A88E]/20 to-[#0D8B7C]/30 flex flex-col items-center justify-center overflow-hidden">
+              {/* Decorative background circles */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-white/10 rounded-full blur-2xl" />
+              <div className="absolute top-12 right-8 w-20 h-20 bg-[#00A88E]/15 rounded-full blur-xl" />
+              <div className="absolute bottom-16 left-6 w-24 h-24 bg-white/5 rounded-full blur-xl" />
+
+              {/* Avatar circle container */}
+              <div className="relative z-10 flex items-center justify-center">
+                <div className="relative w-28 h-28 rounded-full bg-linear-to-br from-white/30 to-white/10 flex items-center justify-center ring-4 ring-white/20 shadow-lg">
+                  {/* Inner avatar with gradient */}
+                  <div className="w-24 h-24 rounded-full bg-linear-to-br from-[#00A88E]/60 to-[#0D8B7C]/60 flex items-center justify-center shadow-inner">
+                    <span className="text-3xl font-bold text-white drop-shadow-md">
+                      {initials}
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Decorative accent bottom */}
+              <div className="absolute bottom-0 left-0 right-0 h-20 bg-linear-to-t from-[#0D8B7C]/40 to-transparent" />
+            </div>
+          )}
         </div>
 
         {/* Team Member Content */}
