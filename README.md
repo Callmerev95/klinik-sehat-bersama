@@ -1,58 +1,53 @@
-# Alsakha Medica Website Project - Phase 1 (Company Profile)
+# Klinik Alsakha Medika - Website Resmi
 
-## Project Overview
+Website resmi **Klinik Alsakha Medika** yang modern, cepat, dan informatif. Dibangun untuk memberikan pengalaman terbaik bagi pasien dan masyarakat Sumbawa.
 
-Website resmi Klinik Alsakha Medica tahap pertama adalah **Company Profile** yang modern, cepat, ringan, dan aman. Fokus utama adalah membangun kredibilitas klinik dengan tampilan profesional dan pengalaman pengguna yang baik. Fitur booking online dan sistem dinamis kompleks akan dikerjakan di phase berikutnya.
+![Alsakha Medika]
 
-## Tujuan Website
+## ✨ Fitur Utama
 
-- Meningkatkan kepercayaan masyarakat terhadap Klinik Alsakha Medica
-- Memberikan informasi lengkap, jelas, dan mudah diakses
-- Menjadi media edukasi kesehatan yang informatif
-- Tampilan modern, cepat loading, dan mobile-friendly
+- **Desain Modern & Responsif** – Tampilan yang bersih, profesional, dan ramah mobile
+- **Halaman Lengkap** – Beranda, Tentang Kami, Pelayanan, Tim Dokter, Organisasi, Partner, Artikel
+- **Sistem Artikel Dinamis** – Menggunakan MDX (mudah ditambah/update)
+- **Integrasi WhatsApp** – Tombol chat langsung ke klinik
+- **SEO Friendly** – Optimized untuk pencarian Google
+- **Static Export** – Performa sangat cepat & mudah di-maintenance
 
-## Halaman yang Dibutuhkan
+## 🛠️ Teknologi yang Digunakan
 
-1. **Beranda (Home)**
-2. **Informasi Klinik** (Visi, Misi, Sejarah, Sertifikat, Partner)
-3. **Pelayanan / Layanan Klinik**
-4. **Tim Dokter** (Profil dokter + foto)
-5. **Edukasi Kesehatan** (Blog Dynamic)
-6. **Galeri Fasilitas Klinik**
-7. **Kontak & Lokasi**
+- **Framework**: Next.js 15 (App Router)
+- **Styling**: Tailwind CSS + shadcn/ui
+- **Konten**: MDX
+- **Animasi**: Framer Motion
+- **Deployment**: Vercel
+- **Domain**: alsakhagroup.com
 
-## Fitur Wajib
+## 🚀 Cara Menjalankan di Lokal
 
-- WhatsApp Floating Button (langsung chat)
-- Testimoni Pasien
-- Google Maps embed
-- Form Kontak
-- SEO On-Page lengkap
-- Footer lengkap (sosmed, quick links, copyright)
+```bash
+# Clone repository
+git clone https://github.com/username/alsakhagroup-website.git
 
-## Tech Stack & Arsitektur
+# Masuk ke folder project
+cd alsakhagroup-website
 
-- **Framework**: Next.js 15 (App Router) dengan Static Export
-- **Styling**: Tailwind CSS + Shadcn/ui + Framer Motion
-- **Bahasa**: TypeScript
-- **Blog Edukasi**: MDX (Markdown + JSX)
-- **Hosting**: Static files di cPanel (Hostinger / Niagahoster / Rumahweb)
-- **Domain**: Custom domain (alsakhamedika.id atau alsakhamedika.com)
+# Install dependencies
+npm install
 
-## Performance & Security Target
+# Jalankan development server
+npm run dev
 
-- Loading time < 2 detik (Core Web Vitals bagus)
-- Static Site Generation (SSG) → sangat aman dan cepat
-- Best practices security (minimal attack surface)
+Buka http://localhost:3000 Struktur Folder public/ → Semua asset statis (gambar, favicon, dll)
+content/artikel/ → Semua artikel website (MDX)
+src/app/ → Halaman utama website
+src/components/ → Komponen reusable
 
-## Timeline Target
+ Cara Update ArtikelEdit file di folder content/artikel/
+Commit & push ke GitHub
+Vercel akan otomatis rebuild (biasanya 30 detik - 1 menit)
 
-- Phase 1 selesai: **10 – 14 hari kerja** (maksimal 2 minggu)
+ Link WebsiteProduction: https://alsakhagroup.com
 
-## Catatan Penting
+ DeveloperDibuat dengan  oleh Rev
 
-- Desain: Modern, clean, profesional, medical feel (tidak jadul)
-- Warna utama: akan disesuaikan nanti (kemungkinan biru-putih atau sesuai branding)
-- Konten (foto, teks, logo, sertifikat, profil dokter) disediakan oleh staff
-- Website harus mudah di-maintenance oleh tim non-teknis
-- Prioritas utama: Kecepatan, keamanan, dan tampilan mobile
+```
