@@ -8,7 +8,11 @@ export const metadata: Metadata = {
   title: "Alsakha Medica | Klinik Kesehatan Terpercaya di Sumbawa",
   description: "Klinik Alsakha Medica menyediakan pelayanan kesehatan berkualitas dengan dokter berpengalaman dan fasilitas modern.",
   icons: {
-    icon: "/favicon.ico",
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon.svg", type: "image/svg+xml" },
+    ],
+    apple: { url: "/apple-touch-icon.png", sizes: "180x180" },
   },
 };
 
