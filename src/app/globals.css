@@ -1,11 +1,11 @@
 @import "tailwindcss";
 
 @layer base {
-  html {
+  html[data-scroll-behavior="smooth"] {
     scroll-behavior: smooth;
   }
   body {
-    font-family: 'Inter', system-ui, sans-serif;
+    font-family: "Inter", system-ui, sans-serif;
   }
 }
 
@@ -16,7 +16,9 @@
 
   /* Bayangan dasar + hover: hindari konflik dengan utility Tailwind shadow-* di elemen yang sama */
   .card-hover {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease;
     box-shadow:
       0 1px 3px 0 rgb(0 0 0 / 0.06),
       0 1px 2px -1px rgb(0 0 0 / 0.06);
