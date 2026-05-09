@@ -291,7 +291,7 @@ export default function TentangKamiPage() {
             <p className="mt-5 text-[1.0625rem] leading-relaxed text-slate-600">
               <strong className="font-semibold text-slate-800">Klinik Alsakha Medica</strong> berdiri sejak{' '}
               <strong className="font-semibold text-[#00A88E]">2018</strong>, berkembang bersama mitra{' '}
-              <strong className="font-semibold text-slate-800">PT. Indosehat 2003</strong> untuk melayani
+              <strong className="font-semibold text-slate-800">PT. Klinik Indosehat 2003</strong> untuk melayani
               kebutuhan kesehatan perusahaan dan masyarakat di wilayah Sumbawa dengan standar yang jelas.
             </p>
           </motion.div>

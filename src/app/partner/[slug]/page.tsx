@@ -23,13 +23,13 @@ interface PartnerData {
 const PARTNERS: Record<string, PartnerData> = {
   'pt-indosehat-2003-group': {
     id: '1',
-    name: 'PT. Indosehat 2003',
+    name: 'PT. Klinik Indosehat 2003',
     logo: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=200&fit=crop',
     shortDescription:
       'Mitra utama dalam pengembangan layanan kesehatan korporat dan komunitas di Nusa Tenggara Barat.',
     category: 'Strategic Partner',
     fullDescription:
-      'Klinik Alsakha Medica bermitra strategis dengan PT. Indosehat 2003 sejak awal berdirinya pada tahun 2018. Kerjasama ini mencakup pengembangan layanan kesehatan korporat, program medical check-up komprehensif, dan berbagai inisiatif kesehatan komunitas. Melalui sinergi dengan PT. Indosehat 2003, kami mampu memperluas jangkauan layanan kesehatan dan meningkatkan standar pelayanan medis di wilayah Sumbawa.',
+      'Klinik Alsakha Medica bermitra strategis dengan PT. Klinik Indosehat 2003 sejak awal berdirinya pada tahun 2018. Kerjasama ini mencakup pengembangan layanan kesehatan korporat, program medical check-up komprehensif, dan berbagai inisiatif kesehatan komunitas. Melalui sinergi dengan PT. Klinik Indosehat 2003, kami mampu memperluas jangkauan layanan kesehatan dan meningkatkan standar pelayanan medis di wilayah Sumbawa.',
     cooperationSince: '2018',
     cooperationFields: [
       'Layanan Medical Check-Up Korporat',
@@ -54,7 +54,7 @@ const PARTNERS: Record<string, PartnerData> = {
       {
         id: '1',
         image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=600&fit=crop',
-        caption: 'Pertemuan Strategis Tim Klinik Alsakha Medica dan PT. Indosehat 2003',
+        caption: 'Pertemuan Strategis Tim Klinik Alsakha Medica dan PT. Klinik Indosehat 2003',
       },
       {
         id: '2',
