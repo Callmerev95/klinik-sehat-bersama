@@ -46,7 +46,7 @@ const DEFAULT_ITEMS: GaleriFasilitasItem[] = [
     id: 'koridor',
     title: 'Koridor & navigasi',
     caption: 'Sirkulasi pasien yang mudah diikuti dan ramah difabilitas.',
-    src: '/images/Facilities/koridor.webp',
+    src: '/images/Facilities/Koridor.webp',
   },
   {
     id: 'penunjang',
