@@ -34,7 +34,7 @@ const DOCTORS = [
     experience: '10+ Tahun Pengalaman',
     description: 'Dokter umum berpengalaman dalam menangani berbagai keluhan kesehatan dengan pendekatan yang tenang dan profesional.',
     image: '/images/Doctors/dr.Nuzul.jpeg',
-    phone: '6282123456789',
+    phone: '6282342561752',
   },
   {
     id: 'dr-afif',
@@ -43,7 +43,7 @@ const DOCTORS = [
     experience: '5+ Tahun Pengalaman',
     description: 'Dokter umum berpengalaman dengan fokus utama pada pencegahan penyakit dan promosi kesehatan untuk semua pasien.',
     image: '/images/Doctors/dr.bambang.jpeg',
-    phone: '6282123456789',
+    phone: '6282342561752',
   },
   {
     id: 'dr-bayu',
@@ -52,7 +52,7 @@ const DOCTORS = [
     experience: '7+ Tahun Pengalaman',
     description: 'Dokter umum yang peduli dengan kesehatan pasien secara menyeluruh, dengan pendekatan hangat dan teliti dalam setiap pemeriksaan.',
     image: '/images/Doctors/dr.siti.jpeg',
-    phone: '6282123456789',
+    phone: '6282342561752',
   },
   {
     id: 'dr-febry',
@@ -61,7 +61,7 @@ const DOCTORS = [
     experience: '5+ Tahun Pengalaman',
     description: 'Dokter umum yang berdedikasi dalam memberikan pelayanan kesehatan berkualitas dengan perhatian terhadap detail dan kepuasan pasien.',
     image: '/images/Doctors/dr.febry.jpeg',
-    phone: '6282123456789',
+    phone: '6282342561752',
   },
 ] as const;
 
