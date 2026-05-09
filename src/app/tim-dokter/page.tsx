@@ -33,7 +33,7 @@ const DOCTORS = [
     specialization: 'Dokter Umum',
     experience: '10+ Tahun Pengalaman',
     description: 'Dokter umum berpengalaman dalam menangani berbagai keluhan kesehatan dengan pendekatan yang tenang dan profesional.',
-    image: '/images/doctors/dr.Nuzul.jpeg',
+    image: '/images/Doctors/dr.Nuzul.jpeg',
     phone: '6282123456789',
   },
   {
@@ -42,7 +42,7 @@ const DOCTORS = [
     specialization: 'Dokter Umum',
     experience: '5+ Tahun Pengalaman',
     description: 'Dokter umum berpengalaman dengan fokus utama pada pencegahan penyakit dan promosi kesehatan untuk semua pasien.',
-    image: '/images/doctors/dr.bambang.jpeg',
+    image: '/images/Doctors/dr.bambang.jpeg',
     phone: '6282123456789',
   },
   {
@@ -51,7 +51,7 @@ const DOCTORS = [
     specialization: 'Dokter Umum',
     experience: '7+ Tahun Pengalaman',
     description: 'Dokter umum yang peduli dengan kesehatan pasien secara menyeluruh, dengan pendekatan hangat dan teliti dalam setiap pemeriksaan.',
-    image: '/images/doctors/dr.siti.jpeg',
+    image: '/images/Doctors/dr.siti.jpeg',
     phone: '6282123456789',
   },
   {
@@ -60,7 +60,7 @@ const DOCTORS = [
     specialization: 'Dokter Umum',
     experience: '5+ Tahun Pengalaman',
     description: 'Dokter umum yang berdedikasi dalam memberikan pelayanan kesehatan berkualitas dengan perhatian terhadap detail dan kepuasan pasien.',
-    image: '/images/doctors/dr.febry.jpeg',
+    image: '/images/Doctors/dr.febry.jpeg',
     phone: '6282123456789',
   },
 ] as const;

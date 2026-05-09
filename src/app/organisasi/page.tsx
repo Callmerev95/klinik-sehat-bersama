@@ -42,7 +42,7 @@ const TEAM_MEMBERS: TeamMember[] = [
     id: 'member-1',
     name: 'Dr. Nuzul Dio Ika Prasatio',
     position: 'Direktur',
-    image: '/images/doctors/dr.Nuzul.jpeg',
+    image: '/images/Doctors/dr.Nuzul.jpeg',
     tier: 'leadership',
   },
   {

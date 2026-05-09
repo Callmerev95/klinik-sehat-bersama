@@ -22,37 +22,37 @@ const DEFAULT_ITEMS: GaleriFasilitasItem[] = [
     id: 'tunggu',
     title: 'Ruang tunggu',
     caption: 'Area tunggu terang dengan alur jelas dan suasana tenang.',
-    src: '/images/facilities/ruang-tunggu.webp',
+    src: '/images/Facilities/ruang-tunggu.webp',
   },
   {
     id: 'periksa',
     title: 'Ruang periksa',
     caption: 'Konsultasi privat dengan pencahayaan alami dan privasi pasien.',
-    src: '/images/facilities/ruang-periksa.webp',
+    src: '/images/Facilities/ruang-periksa.webp',
   },
   {
     id: 'laboratorium',
     title: 'Laboratorium',
     caption: 'Penunjang diagnostik dengan tata ruang higienis dan terkontrol.',
-    src: '/images/facilities/laboratorium.webp',
+    src: '/images/Facilities/laboratorium.webp',
   },
   {
     id: 'resepsionis',
     title: 'Front desk',
     caption: 'Pendaftaran dan informasi layanan dalam satu titik koordinasi.',
-    src: '/images/facilities/frontdesk.webp',
+    src: '/images/Facilities/frontdesk.webp',
   },
   {
     id: 'koridor',
     title: 'Koridor & navigasi',
     caption: 'Sirkulasi pasien yang mudah diikuti dan ramah difabilitas.',
-    src: '/images/facilities/koridor.webp',
+    src: '/images/Facilities/koridor.webp',
   },
   {
     id: 'penunjang',
     title: 'Ruang penunjang',
     caption: 'Zona penunjang medis modern untuk kenyamanan selama pemeriksaan.',
-    src: '/images/facilities/ruang-penunjang.webp',
+    src: '/images/Facilities/ruang-penunjang.webp',
   },
 ];
 
