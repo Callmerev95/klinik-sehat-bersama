@@ -39,6 +39,15 @@ type ArtikelItem = {
 // 3 Artikel terbaru untuk ditampilkan di Home
 const ARTIKEL_TERBARU: ArtikelItem[] = [
   {
+    id: 'artikel-hantavirus',
+    title: 'Hantavirus: Penyakit Langka dari Tikus yang Sedang Viral, Ini yang Harus Kamu Tahu',
+    category: 'Pencegahan',
+    excerpt: 'Pelajari tentang Hantavirus, gejala, cara penularan, dan langkah-langkah pencegahan yang efektif untuk melindungi diri dan keluarga.',
+    image: '/images/Articles/hanta-virus.jpg',
+    date: '9 Mei 2026',
+    slug: 'hantavirus-penyakit-langka-dari-tikus',
+  },
+  {
     id: 'artikel-mcu-rutin',
     title: 'Pentingnya Medical Check Up Rutin untuk Deteksi Dini Penyakit',
     category: 'Pencegahan',
@@ -55,15 +64,6 @@ const ARTIKEL_TERBARU: ArtikelItem[] = [
     image: '/images/Articles/makanan-sehat.jpg',
     date: '12 April 2026',
     slug: 'makanan-sehat-harian',
-  },
-  {
-    id: 'artikel-hipertensi',
-    title: 'Kenali Gejala Hipertensi dan Cara Mencegahnya Sejak Dini',
-    category: 'Penyakit Umum',
-    excerpt: 'Tekanan darah tinggi sering disebut "silent killer". Ketahui gejala awal dan strategi pencegahan yang efektif.',
-    image: '/images/Articles/hipertensi.jpg',
-    date: '10 April 2026',
-    slug: 'hipertensi-pencegahan',
   },
 ];
 

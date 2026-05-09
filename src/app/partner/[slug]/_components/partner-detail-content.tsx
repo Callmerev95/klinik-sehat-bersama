@@ -246,7 +246,7 @@ export function PartnerDetailContent({ partner }: PartnerDetailContentProps) {
           >
             <motion.a
               variants={fadeUp}
-              href="https://wa.me/628xxxxxxxxxx?text=Halo%2C%20saya%20tertarik%20untuk%20berkerjasama%20dengan%20Klinik%20Alsakha%20Medica"
+              href="https://wa.me/6282342561752?text=Halo%2C%20saya%20tertarik%20untuk%20berkerjasama%20dengan%20Klinik%20Alsakha%20Medica"
               className="group inline-flex items-center justify-center gap-2 rounded-lg bg-[#00A88E] px-8 py-3.5 font-medium text-white transition-all duration-200 hover:bg-[#009076] hover:scale-105 sm:px-10"
               target="_blank"
               rel="noopener noreferrer"

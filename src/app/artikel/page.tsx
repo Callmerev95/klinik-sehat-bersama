@@ -30,6 +30,15 @@ const HERO_IMAGE = '/images/Hero/Hero-Artikel.webp';
 
 const ARTICLES = [
   {
+    id: 'artikel-hantavirus',
+    title: 'Hantavirus: Penyakit Langka dari Tikus yang Sedang Viral, Ini yang Harus Kamu Tahu',
+    category: 'Pencegahan',
+    excerpt: 'Pelajari tentang Hantavirus, gejala, cara penularan, dan langkah-langkah pencegahan yang efektif untuk melindungi diri dan keluarga.',
+    image: '/images/Articles/hanta-virus.jpg',
+    date: '9 Mei 2026',
+    slug: 'hantavirus-penyakit-langka-dari-tikus',
+  },
+  {
     id: 'artikel-mcu-rutin',
     title: 'Pentingnya Medical Check Up Rutin untuk Deteksi Dini Penyakit',
     category: 'Pencegahan',

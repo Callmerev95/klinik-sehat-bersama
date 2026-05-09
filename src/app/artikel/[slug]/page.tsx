@@ -119,6 +119,14 @@ const ARTICLE_METADATA: Record<string, {
     mdxSlug: 'vaksinasi-jadwal',
     mdxFile: 'vaksinasi-jadwal.mdx',
   },
+  'hantavirus-penyakit-langka-dari-tikus': {
+    title: 'Hantavirus: Penyakit Langka dari Tikus yang Sedang Viral, Ini yang Harus Kamu Tahu',
+    description: 'Pelajari tentang Hantavirus, gejala, cara penularan, dan langkah-langkah pencegahan yang efektif untuk melindungi diri dan keluarga.',
+    date: '9 Mei 2026',
+    category: 'Pencegahan',
+    mdxSlug: 'hantavirus-penyakit-langka-dari-tikus',
+    mdxFile: 'hantavirus-penyakit-langka-dari-tikus.mdx',
+  },
 };
 
 export async function generateStaticParams() {
