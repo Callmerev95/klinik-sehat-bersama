@@ -189,7 +189,7 @@ export default function Footer() {
                       height={160}
                       className="h-32 w-auto object-contain transition-transform duration-300"
                       sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                      quality={100}
+                      quality={75}
                     />
                   </div>
                 ))}

@@ -325,7 +325,7 @@ export default function TentangKamiPage() {
                     <h3 className="mt-4 text-lg font-semibold tracking-tight text-slate-900">{cab.name}</h3>
                     <p className={cn(
                       'mt-2 flex-1 text-sm leading-relaxed sm:text-[0.9375rem]',
-                      isComingSoon ? 'text-[#00A88E] font-semibold' : 'text-slate-600'
+                      isComingSoon ? 'text-slate-900' : 'text-slate-600'
                     )}>
                       {cab.address}
                     </p>
