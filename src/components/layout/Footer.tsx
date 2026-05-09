@@ -183,7 +183,7 @@ export default function Footer() {
                     )}
                   >
                     <Image
-                      src={`/images/logo/mitra/${slug}.png`}
+                      src={`/images/Logo/mitra/${slug}.png`}
                       alt={name}
                       width={360}
                       height={160}
