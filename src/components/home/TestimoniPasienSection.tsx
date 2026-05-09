@@ -19,8 +19,7 @@ const DEFAULT_TESTIMONI: TestimoniItem[] = [
     quote:
       'Dokter dan perawat menjelaskan dengan sabar. Suasana klinik tenang sehingga saya tidak merasa gugup saat kontrol berkala.',
     rating: 5,
-    imageSrc:
-      'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80',
+    imageSrc: '/images/testimoni/ibu-rina.jpg',
   },
   {
     id: 'agus',
@@ -28,8 +27,7 @@ const DEFAULT_TESTIMONI: TestimoniItem[] = [
     quote:
       'Ruang tunggu rapi dan antrian terasa adil. Saya merasa diperlakukan hormat dari pendaftaran hingga selesai pemeriksaan.',
     rating: 5,
-    imageSrc:
-      'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=400&q=80',
+    imageSrc: '/images/testimoni/bapak-agus.jpg',
   },
   {
     id: 'sari',
@@ -37,8 +35,7 @@ const DEFAULT_TESTIMONI: TestimoniItem[] = [
     quote:
       'Medical check-up berjalan terarah; hasilnya dijelaskan tanpa istilah yang membingungkan. Sangat cocok untuk keluarga.',
     rating: 4.5,
-    imageSrc:
-      'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=400&q=80',
+    imageSrc: '/images/testimoni/ibu-sari.jpg',
   },
 ];
 
