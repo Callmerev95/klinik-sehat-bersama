@@ -143,14 +143,14 @@ export default function Footer() {
             <div className="space-y-3">
               <div className="rounded-xl border border-white/10 bg-white/4 p-3">
                 <p className="text-xs font-bold uppercase tracking-wide text-slate-400">MCU</p>
-                <p className="mt-1.5 text-sm text-slate-300">Senin - Jumat</p>
-                <p className="text-sm font-semibold text-white">08:00 - 17:00 WITA</p>
+                <p className="mt-1.5 text-sm text-slate-300">Senin - Sabtu</p>
+                <p className="text-sm font-semibold text-white">08:00 - 21:00 WITA</p>
               </div>
 
               <div className="rounded-xl border border-white/10 bg-white/4 p-3">
                 <p className="text-xs font-bold uppercase tracking-wide text-slate-400">Layanan Umum</p>
                 <p className="mt-1.5 text-sm text-slate-300">Senin - Minggu</p>
-                <p className="text-sm font-semibold text-white">08:00 - 21:00 WITA</p>
+                <p className="text-sm font-semibold text-white">08:00 - 22:00 WITA</p>
               </div>
 
               <div className="rounded-xl border border-[#00A88E]/30 bg-[#00A88E]/[0.07] p-3 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.04)]">
