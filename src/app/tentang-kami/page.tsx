@@ -2,6 +2,8 @@
 
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import { PageHero } from '@/components/marketing/PageHero';
+import { fadeUp, stagger, ease } from '@/lib/motion';
 import {
   Building2,
   HeartHandshake,
@@ -15,27 +17,6 @@ import {
 } from 'lucide-react';
 
 import { cn } from '@/lib/utils';
-
-const ease = [0.22, 1, 0.36, 1] as const;
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 24 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.55, ease },
-  },
-};
-
-const stagger = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.1, delayChildren: 0.08 },
-  },
-};
-
-const HERO_IMAGE = '/images/Hero/Hero-TentangKami.webp';
 
 const CABANG = [
   {
@@ -152,52 +133,13 @@ function SectionTitle({
 export default function TentangKamiPage() {
   return (
     <div className="min-h-0 bg-white">
-      <section
-        className="relative isolate flex min-h-[52vh] w-full items-end overflow-hidden md:min-h-[58vh] md:items-center"
-        aria-labelledby="tentang-hero-heading"
-      >
-        <div
-          className="absolute inset-0 -z-20 scale-105 bg-slate-900 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: `url('${HERO_IMAGE}')` }}
-          aria-hidden
-        />
-        <div
-          className="absolute inset-0 -z-10 bg-linear-to-br from-[#003d36]/88 via-[#00A88E]/50 to-slate-900/75"
-          aria-hidden
-        />
-        <div className="absolute inset-0 -z-10 bg-black/25" aria-hidden />
-
-        <div className="relative z-10 mx-auto w-full max-w-7xl px-5 pb-14 pt-28 sm:px-6 md:py-24 lg:px-8">
-          <motion.div initial="hidden" animate="visible" variants={stagger} className="max-w-3xl">
-            <motion.p
-              variants={fadeUp}
-              className="text-sm font-medium uppercase tracking-[0.16em] text-[#a8f0e4]"
-            >
-              Alsakha Medica
-            </motion.p>
-            <motion.h1
-              id="tentang-hero-heading"
-              variants={fadeUp}
-              className="mt-3 text-balance text-4xl font-bold tracking-tight text-white sm:text-5xl md:text-6xl"
-            >
-              Tentang Kami
-            </motion.h1>
-            <motion.p
-              variants={fadeUp}
-              className="mt-5 max-w-xl text-lg leading-relaxed text-white/90 sm:text-xl"
-            >
-              Klinik yang mendampingi kesehatan perusahaan dan masyarakat — hangat, profesional, dan
-              terpercaya.
-            </motion.p>
-            <motion.p
-              variants={fadeUp}
-              className="mt-4 inline-flex rounded-full border border-white/25 bg-white/10 px-4 py-2 text-sm font-medium text-white/95 backdrop-blur-sm"
-            >
-              &ldquo;Setia Dikala Sehat – Peduli Dikala Sakit&rdquo;
-            </motion.p>
-          </motion.div>
-        </div>
-      </section>
+      <PageHero
+        image="/images/Hero/Hero-TentangKami.webp"
+        labelledBy="tentang-hero-heading"
+        heading="Tentang Kami"
+        description="Klinik yang mendampingi kesehatan perusahaan dan masyarakat — hangat, profesional, dan terpercaya."
+        quote="Setia Dikala Sehat – Peduli Dikala Sakit"
+      />
 
       <section
         className="section-padding bg-linear-to-b from-slate-50 to-white"

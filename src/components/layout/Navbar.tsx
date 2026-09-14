@@ -8,10 +8,10 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { Menu, MessageCircle, X } from 'lucide-react';
 
 import { HomeTopLink } from '@/components/navigation/HomeTopLink';
+import { whatsapp } from '@/lib/site';
 import { cn } from '@/lib/utils';
 
 /** Samakan dengan CTA di `src/app/page.tsx` saat nomor WhatsApp final. */
-const WHATSAPP_HREF = 'https://wa.me/6282342561752';
 
 const navLinks = [
   { href: '/', label: 'Beranda' },
@@ -128,7 +128,7 @@ export default function Navbar() {
 
           <div className="hidden md:flex">
             <a
-              href={WHATSAPP_HREF}
+              href={whatsapp()}
               target="_blank"
               rel="noopener noreferrer"
               className={cn(
@@ -214,7 +214,7 @@ export default function Navbar() {
                 })}
 
                 <a
-                  href={WHATSAPP_HREF}
+                  href={whatsapp()}
                   target="_blank"
                   rel="noopener noreferrer"
                   className={cn(

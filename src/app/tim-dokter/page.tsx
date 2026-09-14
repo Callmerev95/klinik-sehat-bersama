@@ -2,29 +2,10 @@
 
 import Image from 'next/image';
 import { motion } from 'framer-motion';
+import { PageHero } from '@/components/marketing/PageHero';
+import { stagger } from '@/lib/motion';
+import { MotionCardFrame } from '@/components/marketing/MotionCardFrame';
 import { cn } from '@/lib/utils';
-
-const ease = [0.22, 1, 0.36, 1] as const;
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 24 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.55, ease },
-  },
-};
-
-const stagger = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.1, delayChildren: 0.08 },
-  },
-};
-
-const HERO_IMAGE =
-  'https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=2000&q=80';
 
 const DOCTORS = [
   {
@@ -71,24 +52,7 @@ function DoctorCard({ doctor, index }: { doctor: (typeof DOCTORS)[number]; index
   )}`;
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-50px' }}
-      transition={{
-        duration: 0.45,
-        ease,
-        delay: index * 0.08,
-      }}
-      className="h-full"
-    >
-      <article
-        className={cn(
-          'card-hover flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200/80',
-          'bg-white shadow-[0_1px_3px_rgb(15_23_42/0.06)] transition-all duration-300',
-          'hover:border-[#00A88E]/40 hover:shadow-lg hover:shadow-[#00A88E]/10'
-        )}
-      >
+    <MotionCardFrame index={index}>
         {/* Doctor Photo Section - Portrait */}
         <div className="relative w-full overflow-hidden bg-slate-100" style={{ aspectRatio: '3/4' }}>
           <Image
@@ -143,64 +107,23 @@ function DoctorCard({ doctor, index }: { doctor: (typeof DOCTORS)[number]; index
             Lihat Jadwal & Hubungi
           </a>
         </div>
-      </article>
-    </motion.div>
+      </MotionCardFrame>
   );
 }
 
 export default function TimDokterPage() {
   return (
     <div className="min-h-0 bg-white">
-      <section
-        className="relative isolate flex min-h-[52vh] w-full items-end overflow-hidden md:min-h-[58vh] md:items-center"
-        aria-labelledby="tim-dokter-hero-heading"
-      >
-        <div
-          className="absolute inset-0 -z-20 scale-105 bg-slate-900 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: `url('${HERO_IMAGE}')` }}
-          aria-hidden
-        />
-        <div
-          className="absolute inset-0 -z-10 bg-linear-to-br from-[#003d36]/88 via-[#00A88E]/50 to-slate-900/75"
-          aria-hidden
-        />
-        <div className="absolute inset-0 -z-10 bg-black/25" aria-hidden />
-
-        <div className="relative z-10 mx-auto w-full max-w-7xl px-5 pb-14 pt-28 sm:px-6 md:py-24 lg:px-8">
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            variants={stagger}
-            className="mx-auto max-w-3xl text-center md:mx-0 md:text-left"
-          >
-            <motion.p
-              variants={fadeUp}
-              className="text-sm font-medium uppercase tracking-[0.16em] text-[#a8f0e4]"
-            >
-              Alsakha Medica
-            </motion.p>
-            <motion.h1
-              id="tim-dokter-hero-heading"
-              variants={fadeUp}
-              className="mt-3 text-balance text-4xl font-bold tracking-tight text-white sm:text-5xl md:text-6xl"
-            >
-              Tim Dokter Kami
-            </motion.h1>
-            <motion.p
-              variants={fadeUp}
-              className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-white/90 sm:text-xl md:mx-0"
-            >
-              Dokter-dokter bersertifikat dengan pendekatan hangat dan profesional, siap memberikan pelayanan klinik yang terpercaya untuk Anda dan keluarga.
-            </motion.p>
-            <motion.p
-              variants={fadeUp}
-              className="mt-6 inline-flex rounded-full border border-white/25 bg-white/10 px-4 py-2 text-sm font-medium text-white/95 backdrop-blur-sm"
-            >
-              &ldquo;Setia Dikala Sehat – Peduli Dikala Sakit&rdquo;
-            </motion.p>
-          </motion.div>
-        </div>
-      </section>
+      <PageHero
+        image="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=2000&q=80"
+        labelledBy="tim-dokter-hero-heading"
+        heading="Tim Dokter Kami"
+        description="Dokter-dokter bersertifikat dengan pendekatan hangat dan profesional, siap memberikan pelayanan klinik yang terpercaya untuk Anda dan keluarga."
+        quote="“Setia Dikala Sehat – Peduli Dikala Sakit”"
+        alignment="responsive-center"
+        descriptionWidth="wide"
+        quoteSpacing="large"
+      />
 
       <section
         className="section-padding border-t border-slate-100 bg-slate-50/80"
