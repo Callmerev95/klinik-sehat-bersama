@@ -16,7 +16,7 @@ const SITE_URL = "https://klinik-sehat-bersama.callmerev.my.id";
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Klinik Sehat Bersama | Klinik Kesehatan Terpercaya di Kota Contoh",
+    default: "Klinik Sehat Bersama | Klinik Kesehatan Terpercaya di Kota Sumbawa",
     template: "%s | Klinik Sehat Bersama",
   },
   description:
@@ -71,7 +71,7 @@ const clinicJsonLd = {
   address: {
     "@type": "PostalAddress",
     streetAddress: "Jl. Contoh No. 00",
-    addressLocality: "Kota Contoh",
+    addressLocality: "Kota Sumbawa",
     postalCode: "00000",
     addressCountry: "ID",
   },

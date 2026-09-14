@@ -4,7 +4,7 @@ import { ChevronRight, Clock, Mail, MapPin, Phone } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 /**
- * Embed peta cabang utama (Kota Contoh).
+ * Embed peta cabang utama (Kota Sumbawa).
  * Ganti dengan kode embed resmi Google Maps (Share → Embed) bila sudah tersedia.
  */
 const MAP_EMBED_SRC =
@@ -16,7 +16,7 @@ const PHONE_HREF = 'tel:+6280000000000';
 const EMAIL = 'halo@kliniksehatbersama.example.id';
 
 const CABANG_UTAMA_LINE =
-  'Jl. Contoh No. 00, Kota Contoh — Klinik Sehat Bersama';
+  'Jl. Contoh No. 00, Kota Sumbawa — Klinik Sehat Bersama';
 
 export function LokasiKamiSection() {
   return (
@@ -69,7 +69,7 @@ export function LokasiKamiSection() {
                 )}
               >
                 <iframe
-                  title="Peta Google Maps — Klinik Sehat Bersama, Kota Contoh"
+                  title="Peta Google Maps — Klinik Sehat Bersama, Kota Sumbawa"
                   src={MAP_EMBED_SRC}
                   className="absolute inset-0 h-full w-full border-0"
                   loading="lazy"

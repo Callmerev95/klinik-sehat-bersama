@@ -8,7 +8,7 @@ export const CLINIC = {
   whatsappNumber: '6280000000000',
   email: 'halo@kliniksehatbersama.example.id',
   address:
-    'Jl. Contoh No. 00, Kota Contoh, Provinsi Contoh 00000, Indonesia',
+    'Jl. Contoh No. 00, Kota Sumbawa, Provinsi Contoh 00000, Indonesia',
 } as const;
 
 export function whatsapp(message?: string): string {

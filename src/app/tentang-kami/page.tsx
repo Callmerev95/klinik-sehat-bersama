@@ -21,8 +21,8 @@ import { cn } from '@/lib/utils';
 const CABANG = [
   {
     id: 'cabang-1',
-    name: 'Cabang Kota Contoh',
-    address: 'Jl. Contoh No. 00, Kelurahan Contoh, Kota Contoh',
+    name: 'Cabang Kota Sumbawa',
+    address: 'Jl. Contoh No. 00, Kelurahan Contoh, Kota Sumbawa',
   },
   {
     id: 'cabang-2',
@@ -46,7 +46,7 @@ const KEUNGGULAN = [
   {
     icon: MapPin,
     title: 'Lokasi yang Strategis',
-    text: 'Berlokasi di Jl. Contoh No. 00, terletak strategis di pusat Kota Contoh, dekat dengan fasilitas umum dan area publik.',
+    text: 'Berlokasi di Jl. Contoh No. 00, terletak strategis di pusat Kota Sumbawa, dekat dengan fasilitas umum dan area publik.',
   },
   {
     icon: HeartHandshake,

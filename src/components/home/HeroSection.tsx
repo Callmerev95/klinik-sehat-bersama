@@ -10,7 +10,7 @@ import { fadeUp, fadeUpStatic, stagger } from '@/lib/motion';
 const HERO_IMAGE = '/images/Hero/Hero-Home.webp';
 
 const HERO_COPY = {
-  eyebrow: 'Klinik kesehatan & Medical Center terpercaya di Kota Contoh',
+  eyebrow: 'Klinik kesehatan & Medical Center terpercaya di Kota Sumbawa',
   title: 'Klinik Sehat Bersama',
   subheadline:
     '"Setia Dikala Sehat - Peduli Dikala Sakit"',
