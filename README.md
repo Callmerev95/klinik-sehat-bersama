@@ -171,4 +171,4 @@ Project berupa static export (`out/`). Push ke branch `main` akan memicu deploym
 
 ---
 
-Dikembangkan oleh **Rev**
+Dikembangkan oleh [**Rev**](https://callmerev.my.id)
