@@ -5,7 +5,7 @@ export const CLINIC = {
   whatsappNumber: '6282342561752',
   email: 'klinik.alsakha.medica90@gmail.com',
   address:
-    'Jl. Garuda No.138, Labuan Sumbawa, Labuhan Badas, Kabupaten Sumbawa, Nusa Tenggara Bar. 84316, Indonesia',
+    'Jl. Garuda No.138, Labuhan Badas, Kabupaten Sumbawa, Nusa Tenggara Barat 84316, Indonesia',
 } as const;
 
 export function whatsapp(message?: string): string {

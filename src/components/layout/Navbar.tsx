@@ -3,14 +3,14 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Menu, MessageCircle, X } from 'lucide-react';
 
 import { HomeTopLink } from '@/components/navigation/HomeTopLink';
 import { whatsapp } from '@/lib/site';
+import { ease } from '@/lib/motion';
 import { cn } from '@/lib/utils';
-
 /** Samakan dengan CTA di `src/app/page.tsx` saat nomor WhatsApp final. */
 
 const navLinks = [
@@ -20,7 +20,7 @@ const navLinks = [
   { href: '/tim-dokter/', label: 'Tim Dokter' },
   { href: '/organisasi/', label: 'Organisasi' },
   { href: '/artikel/', label: 'Artikel' },
-  { href: '/partner/', label: 'Partner' },
+  { href: '/partner/', label: 'Mitra' },
   { href: '/#lokasi-kami', label: 'Kontak' },
 ] as const;
 
@@ -35,12 +35,12 @@ function linkIsActive(pathname: string, href: string): boolean {
   return pathname === href || pathname === base || pathname.startsWith(`${base}/`);
 }
 
-const navEase = [0.22, 1, 0.36, 1] as const;
-
 export default function Navbar() {
   const pathname = usePathname() ?? '/';
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
+  const toggleRef = useRef<HTMLButtonElement>(null);
 
   const closeMenu = useCallback(() => setIsOpen(false), []);
 
@@ -57,6 +57,39 @@ export default function Navbar() {
       document.body.style.overflow = '';
     };
   }, [isOpen]);
+
+  // APG disclosure: Escape menutup, Tab terjebak di dalam menu,
+  // fokus kembali ke tombol pemicu saat menu ditutup.
+  useEffect(() => {
+    if (!isOpen) return;
+    const menu = menuRef.current;
+    const toggle = toggleRef.current;
+    menu?.querySelector<HTMLElement>('a[href], button:not([disabled])')?.focus();
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        closeMenu();
+        toggle?.focus();
+        return;
+      }
+      if (e.key !== 'Tab' || !menu) return;
+      const items = menu.querySelectorAll<HTMLElement>('a[href], button:not([disabled])');
+      if (items.length === 0) return;
+      const first = items[0];
+      const last = items[items.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    };
+    document.addEventListener('keydown', onKeyDown);
+    return () => {
+      document.removeEventListener('keydown', onKeyDown);
+      toggle?.focus();
+    };
+  }, [isOpen, closeMenu]);
 
   return (
     <header className="sticky top-0 z-50 w-full">
@@ -78,7 +111,7 @@ export default function Navbar() {
             className={cn(
               'group flex shrink-0 rounded-lg outline-none',
               'transition-[background-color,transform] duration-200 ease-out',
-              'focus-visible:ring-2 focus-visible:ring-[#00A88E]/35 focus-visible:ring-offset-2'
+              'focus-visible:ring-2 focus-visible:ring-primary/35 focus-visible:ring-offset-2'
             )}
           >
             <Image
@@ -99,8 +132,8 @@ export default function Navbar() {
                 'rounded-xl px-3.5 py-2 text-[0.9375rem] font-medium',
                 'transition-[color,background-color] duration-200 ease-out',
                 active
-                  ? 'bg-[#00A88E]/10 text-[#00A88E]'
-                  : 'text-slate-600 hover:bg-[#00A88E]/[0.07] hover:text-[#00A88E]'
+                  ? 'bg-primary/10 text-primary'
+                  : 'text-slate-600 hover:bg-primary/[0.07] hover:text-primary'
               );
               if (link.href === '/') {
                 return (
@@ -133,11 +166,11 @@ export default function Navbar() {
               rel="noopener noreferrer"
               className={cn(
                 'group inline-flex items-center gap-2.5 rounded-xl px-6 py-2.5 text-sm font-semibold text-white',
-                'bg-linear-to-br from-[#00A88E] to-[#008C76] shadow-lg shadow-[#00A88E]/30',
-                'transition-all duration-300 ease-out',
-                'hover:shadow-xl hover:shadow-[#00A88E]/40 hover:-translate-y-0.5 hover:from-[#00B89E] hover:to-[#007A65]',
-                'active:translate-y-0 active:shadow-md active:shadow-[#00A88E]/25',
-                'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00A88E]/50 focus-visible:ring-offset-2'
+                'bg-linear-to-br in oklab from-primary to-primary-deep shadow-lg shadow-primary/30',
+                'transition-[color,background-color,box-shadow,transform] duration-300 ease-out',
+                'hover:shadow-xl hover:shadow-primary/40 hover:-translate-y-0.5 hover:from-primary-deep hover:to-primary-deep',
+                'active:translate-y-0 active:shadow-md active:shadow-primary/25',
+                'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2'
               )}
             >
               <MessageCircle className="size-4.5 shrink-0 transition-transform duration-300 group-hover:scale-110" aria-hidden />
@@ -146,13 +179,14 @@ export default function Navbar() {
           </div>
 
           <button
+            ref={toggleRef}
             type="button"
             onClick={() => setIsOpen((v) => !v)}
             className={cn(
               'inline-flex size-10 items-center justify-center rounded-xl text-slate-600',
               'transition-[color,background-color] duration-200 ease-out',
-              'hover:bg-[#00A88E]/8 hover:text-[#00A88E]',
-              'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00A88E]/35 md:hidden'
+              'hover:bg-primary/8 hover:text-primary',
+              'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/35 md:hidden'
             )}
             aria-expanded={isOpen}
             aria-controls="mobile-nav-menu"
@@ -165,18 +199,19 @@ export default function Navbar() {
         <AnimatePresence initial={false}>
           {isOpen && (
             <motion.div
+              ref={menuRef}
               id="mobile-nav-menu"
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.25, ease: navEase }}
+              transition={{ duration: 0.25, ease }}
               className="overflow-hidden border-t border-white/40 bg-white/44 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.55)] backdrop-blur-xl backdrop-saturate-150 md:hidden"
             >
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                transition={{ duration: 0.2, ease: navEase }}
+                transition={{ duration: 0.2, ease }}
                 className="flex flex-col gap-1 px-4 py-4 sm:px-5"
               >
                 {navLinks.map((link) => {
@@ -185,8 +220,8 @@ export default function Navbar() {
                     'rounded-xl px-3.5 py-3 text-[0.9375rem] font-medium',
                     'transition-[color,background-color] duration-200 ease-out',
                     active
-                      ? 'bg-[#00A88E]/10 text-[#00A88E]'
-                      : 'text-slate-700 hover:bg-[#00A88E]/[0.07] hover:text-[#00A88E]'
+                      ? 'bg-primary/10 text-primary'
+                      : 'text-slate-700 hover:bg-primary/[0.07] hover:text-primary'
                   );
                   if (link.href === '/') {
                     return (
@@ -219,11 +254,11 @@ export default function Navbar() {
                   rel="noopener noreferrer"
                   className={cn(
                     'group mt-3 flex items-center justify-center gap-2.5 rounded-xl py-3.5 text-center text-[0.9375rem] font-semibold text-white',
-                    'bg-linear-to-br from-[#00A88E] to-[#008C76] shadow-lg shadow-[#00A88E]/30',
-                    'transition-all duration-300 ease-out',
-                    'hover:shadow-xl hover:shadow-[#00A88E]/40 hover:-translate-y-0.5 hover:from-[#00B89E] hover:to-[#007A65]',
-                    'active:translate-y-0 active:shadow-md active:shadow-[#00A88E]/25',
-                    'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00A88E]/50 focus-visible:ring-offset-2'
+                    'bg-linear-to-br in oklab from-primary to-primary-deep shadow-lg shadow-primary/30',
+                    'transition-[color,background-color,box-shadow,transform] duration-300 ease-out',
+                    'hover:shadow-xl hover:shadow-primary/40 hover:-translate-y-0.5 hover:from-primary-deep hover:to-primary-deep',
+                    'active:translate-y-0 active:shadow-md active:shadow-primary/25',
+                    'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2'
                   )}
                 >
                   <MessageCircle className="size-5 shrink-0 transition-transform duration-300 group-hover:scale-110" aria-hidden />

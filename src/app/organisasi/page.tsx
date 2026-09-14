@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import { PageHero } from '@/components/marketing/PageHero';
 import { ease, stagger } from '@/lib/motion';
 import { MotionCardFrame } from '@/components/marketing/MotionCardFrame';
@@ -39,14 +39,14 @@ const TEAM_MEMBERS: TeamMember[] = [
   {
     id: 'member-3',
     name: 'Yuda Febriansyah',
-    position: 'Manager Operasional',
+    position: 'Manajer Operasional',
     image: '/images/tim-operasional/Yuda.jpeg',
     tier: 'management',
   },
   {
     id: 'member-3b',
     name: 'Feny Dwi Maharani',
-    position: 'sekretaris Operasional',
+    position: 'Sekretaris Operasional',
 
     image: '/images/tim-operasional/Feny.jpeg',
     tier: 'management',
@@ -132,7 +132,7 @@ function TeamCard({ member, index }: TeamCardProps) {
   return (
     <MotionCardFrame index={index}>
       {/* Team Member Image - Portrait */}
-        <div className="relative w-full overflow-hidden flex items-center justify-center" style={{ aspectRatio: '3/4' }}>
+        <div className="relative w-full overflow-hidden flex items-center justify-center ring-1 ring-inset ring-black/10" style={{ aspectRatio: '3/4' }}>
           {hasImage ? (
             <Image
               src={member.image}
@@ -144,17 +144,17 @@ function TeamCard({ member, index }: TeamCardProps) {
               onError={() => setImageError(true)}
             />
           ) : (
-            <div className="relative w-full h-full bg-linear-to-b from-[#00A88E]/40 via-[#00A88E]/20 to-[#0D8B7C]/30 flex flex-col items-center justify-center overflow-hidden">
+            <div className="relative w-full h-full bg-linear-to-b from-primary/40 via-primary/20 to-primary/30 flex flex-col items-center justify-center overflow-hidden">
               {/* Decorative background circles */}
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-white/10 rounded-full blur-2xl" />
-              <div className="absolute top-12 right-8 w-20 h-20 bg-[#00A88E]/15 rounded-full blur-xl" />
+              <div className="absolute top-12 right-8 w-20 h-20 bg-primary/15 rounded-full blur-xl" />
               <div className="absolute bottom-16 left-6 w-24 h-24 bg-white/5 rounded-full blur-xl" />
 
               {/* Avatar circle container */}
               <div className="relative z-10 flex items-center justify-center">
                 <div className="relative w-28 h-28 rounded-full bg-linear-to-br from-white/30 to-white/10 flex items-center justify-center ring-4 ring-white/20 shadow-lg">
                   {/* Inner avatar with gradient */}
-                  <div className="w-24 h-24 rounded-full bg-linear-to-br from-[#00A88E]/60 to-[#0D8B7C]/60 flex items-center justify-center shadow-inner">
+                  <div className="w-24 h-24 rounded-full bg-linear-to-br from-primary/60 to-primary/60 flex items-center justify-center shadow-inner">
                     <span className="text-3xl font-bold text-white drop-shadow-md">
                       {initials}
                     </span>
@@ -163,7 +163,7 @@ function TeamCard({ member, index }: TeamCardProps) {
               </div>
 
               {/* Decorative accent bottom */}
-              <div className="absolute bottom-0 left-0 right-0 h-20 bg-linear-to-t from-[#0D8B7C]/40 to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 h-20 bg-linear-to-t from-primary/40 to-transparent" />
             </div>
           )}
         </div>
@@ -172,13 +172,13 @@ function TeamCard({ member, index }: TeamCardProps) {
         <div className="flex flex-1 flex-col px-5 py-6 sm:px-6 sm:py-7">
           {/* Position Badge */}
           <div className="mb-4 flex items-center gap-2">
-            <span className="inline-flex rounded-full bg-[#00A88E]/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-[#00A88E]">
+            <span className="inline-flex rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-primary">
               {member.position}
             </span>
           </div>
 
           {/* Team Member Name */}
-          <h3 className="text-lg font-bold tracking-tight text-slate-900 mb-2 line-clamp-2 leading-snug">
+          <h3 title={member.name} className="text-lg font-bold tracking-tight text-slate-900 mb-2 line-clamp-2 leading-snug">
             {member.name}
           </h3>
 
@@ -194,6 +194,7 @@ function TeamCard({ member, index }: TeamCardProps) {
 }
 
 export default function OrganisasiPage() {
+  const reduce = useReducedMotion();
   return (
     <div className="min-h-0 bg-white">
       {/* Hero Section - Konsisten dengan halaman lain */}
@@ -216,10 +217,10 @@ export default function OrganisasiPage() {
         <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
           {/* Section Header */}
           <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={reduce ? false : { opacity: 0, y: 24 }}
+            whileInView={reduce ? undefined : { opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-50px' }}
-            transition={{ duration: 0.45, ease }}
+            transition={{ duration: reduce ? 0.01 : 0.45, ease }}
             className="mb-12 text-center md:mb-14"
           >
             <h2
@@ -235,7 +236,7 @@ export default function OrganisasiPage() {
 
           {/* Leadership Grid - 2 Cards */}
           <motion.div
-            initial="hidden"
+            initial={reduce ? false : 'hidden'}
             whileInView="visible"
             viewport={{ once: true, margin: '-50px' }}
             variants={stagger}
@@ -256,10 +257,10 @@ export default function OrganisasiPage() {
         <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
           {/* Section Header */}
           <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={reduce ? false : { opacity: 0, y: 24 }}
+            whileInView={reduce ? undefined : { opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-50px' }}
-            transition={{ duration: 0.45, ease }}
+            transition={{ duration: reduce ? 0.01 : 0.45, ease }}
             className="mb-12 text-center md:mb-14"
           >
             <h2
@@ -269,13 +270,13 @@ export default function OrganisasiPage() {
               Tim Manajemen
             </h2>
             <p className="mt-4 text-pretty text-base leading-relaxed text-slate-600 sm:text-lg">
-              Manager dan kepala departemen yang mengelola operasional dan strategi organisasi.
+              Manajer dan kepala departemen yang mengelola operasional dan strategi organisasi.
             </p>
           </motion.div>
 
           {/* Management Grid - 3 Cards Responsive */}
           <motion.div
-            initial="hidden"
+            initial={reduce ? false : 'hidden'}
             whileInView="visible"
             viewport={{ once: true, margin: '-50px' }}
             variants={stagger}
@@ -296,10 +297,10 @@ export default function OrganisasiPage() {
         <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
           {/* Section Header */}
           <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={reduce ? false : { opacity: 0, y: 24 }}
+            whileInView={reduce ? undefined : { opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-50px' }}
-            transition={{ duration: 0.45, ease }}
+            transition={{ duration: reduce ? 0.01 : 0.45, ease }}
             className="mb-12 text-center md:mb-14"
           >
             <h2
@@ -315,7 +316,7 @@ export default function OrganisasiPage() {
 
           {/* Operational Grid - 3 Cards Responsive */}
           <motion.div
-            initial="hidden"
+            initial={reduce ? false : 'hidden'}
             whileInView="visible"
             viewport={{ once: true, margin: '-50px' }}
             variants={stagger}

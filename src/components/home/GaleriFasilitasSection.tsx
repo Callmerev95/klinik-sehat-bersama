@@ -6,8 +6,7 @@ import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { ChevronLeft, ChevronRight, X } from 'lucide-react';
 
 import { cn } from '@/lib/utils';
-
-const ease = [0.22, 1, 0.36, 1] as const;
+import { ease } from '@/lib/motion';
 
 export type GaleriFasilitasItem = {
   id: string;
@@ -64,8 +63,11 @@ type GaleriFasilitasSectionProps = {
 export function GaleriFasilitasSection({ className, items = DEFAULT_ITEMS }: GaleriFasilitasSectionProps) {
   const reduceMotion = useReducedMotion();
   const titleId = useId();
+  const dialogId = useId();
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const closeBtnRef = useRef<HTMLButtonElement>(null);
+  const dialogRef = useRef<HTMLDivElement>(null);
+  const triggerIndexRef = useRef<number | null>(null);
 
   const close = useCallback(() => setOpenIndex(null), []);
 
@@ -90,15 +92,48 @@ export function GaleriFasilitasSection({ className, items = DEFAULT_ITEMS }: Gal
     return () => {
       document.body.style.overflow = '';
       window.clearTimeout(t);
+      // Kembalikan fokus ke thumbnail pemicu.
+      const i = triggerIndexRef.current;
+      if (i !== null) {
+        document
+          .querySelector<HTMLElement>(`[data-galeri-trigger="${i}"]`)
+          ?.focus();
+      }
     };
   }, [openIndex]);
 
   useEffect(() => {
     if (openIndex === null) return;
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') close();
-      if (e.key === 'ArrowLeft') goPrev();
-      if (e.key === 'ArrowRight') goNext();
+      if (e.key === 'Escape') {
+        close();
+        return;
+      }
+      if (e.key === 'ArrowLeft') {
+        goPrev();
+        return;
+      }
+      if (e.key === 'ArrowRight') {
+        goNext();
+        return;
+      }
+      // ArrowLeft/Right tetap; Tab terjebak di dalam dialog.
+      if (e.key !== 'Tab') return;
+      const dialog = dialogRef.current;
+      if (!dialog) return;
+      const items = dialog.querySelectorAll<HTMLElement>(
+        'button:not([disabled]), a[href]'
+      );
+      if (items.length === 0) return;
+      const first = items[0];
+      const last = items[items.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
@@ -117,7 +152,7 @@ export function GaleriFasilitasSection({ className, items = DEFAULT_ITEMS }: Gal
     >
       <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
         <header className="mx-auto max-w-2xl text-center">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#00A88E]/90 sm:text-[0.8125rem]">
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary/90 sm:text-[0.8125rem]">
             Lingkungan perawatan
           </p>
           <h2
@@ -146,11 +181,15 @@ export function GaleriFasilitasSection({ className, items = DEFAULT_ITEMS }: Gal
               >
                 <button
                   type="button"
-                  onClick={() => setOpenIndex(index)}
+                  data-galeri-trigger={index}
+                  onClick={() => {
+                    triggerIndexRef.current = index;
+                    setOpenIndex(index);
+                  }}
                   className={cn(
                     'card-hover group relative w-full overflow-hidden rounded-2xl border border-slate-200/90 bg-slate-50 text-left',
-                    'ring-0 ring-[#00A88E]/0 transition-[ring-color,box-shadow] duration-300',
-                    'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00A88E]/45 focus-visible:ring-offset-2'
+                    'transition-[transform,box-shadow,ring-color] duration-300',
+                    'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/45 focus-visible:ring-offset-2'
                   )}
                   aria-haspopup="dialog"
                   aria-label={`Buka gambar besar: ${item.title}`}
@@ -172,13 +211,13 @@ export function GaleriFasilitasSection({ className, items = DEFAULT_ITEMS }: Gal
                       <p className="text-sm font-semibold tracking-tight text-white drop-shadow-sm sm:text-base">
                         {item.title}
                       </p>
-                      <p className="mt-0.5 line-clamp-2 text-xs leading-snug text-white/85 sm:text-[0.8125rem]">
+                      <p title={item.caption} className="mt-0.5 line-clamp-2 text-xs leading-snug text-white/85 sm:text-[0.8125rem]">
                         {item.caption}
                       </p>
                     </div>
                   </div>
                   <span
-                    className="absolute right-2 top-2 flex size-8 items-center justify-center rounded-lg bg-white/90 text-[#00A88E] opacity-0 shadow-sm backdrop-blur-sm transition-opacity duration-300 group-hover:opacity-100 sm:right-3 sm:top-3"
+                    className="absolute right-2 top-2 flex size-8 items-center justify-center rounded-lg bg-white/90 text-primary opacity-0 shadow-sm backdrop-blur-sm transition-opacity duration-300 group-hover:opacity-100 sm:right-3 sm:top-3"
                     aria-hidden
                   >
                     <span className="text-[0.65rem] font-bold uppercase tracking-wide">+</span>
@@ -190,13 +229,15 @@ export function GaleriFasilitasSection({ className, items = DEFAULT_ITEMS }: Gal
         </ul>
       </div>
 
-      <AnimatePresence mode="wait">
+      <AnimatePresence initial={false} mode="wait">
         {active && openIndex !== null && (
           <motion.div
             key="lightbox"
+            ref={dialogRef}
             role="dialog"
             aria-modal="true"
             aria-labelledby={titleId}
+            id={dialogId}
             className="fixed inset-0 z-100 flex items-center justify-center p-4 sm:p-6"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -242,7 +283,7 @@ export function GaleriFasilitasSection({ className, items = DEFAULT_ITEMS }: Gal
                 className={cn(
                   'absolute right-3 top-3 z-3 inline-flex size-10 items-center justify-center rounded-xl',
                   'bg-white/95 text-slate-800 shadow-md transition-colors hover:bg-white',
-                  'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00A88E] focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900',
+                  'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900',
                   'sm:right-4 sm:top-4'
                 )}
                 aria-label="Tutup"
@@ -257,8 +298,8 @@ export function GaleriFasilitasSection({ className, items = DEFAULT_ITEMS }: Gal
                     type="button"
                     className={cn(
                       'absolute left-2 top-1/2 z-2 inline-flex size-10 -translate-y-1/2 items-center justify-center rounded-xl',
-                      'border border-white/20 bg-slate-900/80 text-white backdrop-blur-sm transition-colors hover:border-[#00A88E]/50 hover:bg-slate-900',
-                      'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00A88E] sm:left-3'
+                      'border border-white/20 bg-slate-900/80 text-white backdrop-blur-sm transition-colors hover:border-primary/50 hover:bg-slate-900',
+                      'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary sm:left-3'
                     )}
                     aria-label="Gambar sebelumnya"
                     onClick={(e) => {
@@ -272,8 +313,8 @@ export function GaleriFasilitasSection({ className, items = DEFAULT_ITEMS }: Gal
                     type="button"
                     className={cn(
                       'absolute right-14 top-1/2 z-2 inline-flex size-10 -translate-y-1/2 items-center justify-center rounded-xl sm:right-16',
-                      'border border-white/20 bg-slate-900/80 text-white backdrop-blur-sm transition-colors hover:border-[#00A88E]/50 hover:bg-slate-900',
-                      'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00A88E]'
+                      'border border-white/20 bg-slate-900/80 text-white backdrop-blur-sm transition-colors hover:border-primary/50 hover:bg-slate-900',
+                      'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary'
                     )}
                     aria-label="Gambar berikutnya"
                     onClick={(e) => {

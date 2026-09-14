@@ -16,3 +16,12 @@ export const stagger = {
     transition: { staggerChildren: 0.1, delayChildren: 0.08 },
   },
 } as const;
+
+/** Fallback opacity-only untuk `prefers-reduced-motion: reduce`. */
+export const fadeUpStatic = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { duration: 0.01 },
+  },
+} as const;

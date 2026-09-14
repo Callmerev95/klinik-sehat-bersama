@@ -40,7 +40,7 @@ function ArticleCard({
       wrapperClassName="scroll-mt-24"
     >
         {/* Article Thumbnail Section - 16:9 Aspect Ratio */}
-        <div className="relative w-full h-56 overflow-hidden rounded-t-2xl shrink-0">
+        <div className="relative w-full h-56 overflow-hidden rounded-t-2xl shrink-0 ring-1 ring-inset ring-black/10">
           <Image
             src={article.meta.thumbnail}
             alt={article.meta.title}
@@ -59,7 +59,7 @@ function ArticleCard({
           </div>
 
           {/* Article Title */}
-          <h3 className="text-lg font-bold tracking-tight text-slate-900 mb-3 leading-snug line-clamp-3">
+          <h3 title={article.meta.title} className="text-lg font-bold tracking-tight text-slate-900 mb-3 leading-normal line-clamp-3">
             {article.meta.title}
           </h3>
 
@@ -76,15 +76,16 @@ function ArticleCard({
             </div>
             <Link
               href={`/artikel/${article.slug}/`}
+              aria-label={`Baca selengkapnya: ${article.meta.title}`}
               className={cn(
                 'inline-flex items-center gap-1.5 px-4 py-2 rounded-lg',
-                'text-sm font-semibold text-[#00A88E]',
-                'bg-[#00A88E]/10 transition-all duration-200',
-                'hover:bg-[#00A88E] hover:text-white hover:-translate-y-0.5'
+                'text-sm font-semibold text-primary',
+                'bg-primary/10 transition-[color,background-color,transform] duration-200',
+                'hover:bg-primary hover:text-white hover:-translate-y-0.5'
               )}
             >
               Baca Selengkapnya
-              <ChevronRight className="w-4 h-4" />
+              <ChevronRight className="w-4 h-4" aria-hidden />
             </Link>
           </div>
         </div>

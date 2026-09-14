@@ -48,7 +48,7 @@ export default function Footer() {
   return (
     <footer
       role="contentinfo"
-      className="border-t border-[#00A88E]/15 bg-linear-to-b from-slate-900 via-slate-950 to-slate-950 text-slate-300"
+      className="border-t border-primary/15 bg-linear-to-b from-slate-900 via-slate-950 to-slate-950 text-slate-300"
     >
       <div className="mx-auto max-w-7xl px-5 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-20">
         {/* 3 Column Grid */}
@@ -56,7 +56,7 @@ export default function Footer() {
           {/* Column 1: Logo, Address, Contact, Social */}
           <div className="flex flex-col gap-4 md:border-r md:border-white/10 md:pr-6 lg:pr-8">
             {/* Logo & Brand Container */}
-            <HomeTopLink className="group inline-flex items-center gap-3 rounded-lg outline-none transition-transform duration-300 focus-visible:ring-2 focus-visible:ring-[#00A88E]/50 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950">
+            <HomeTopLink className="group inline-flex items-center gap-3 rounded-lg outline-none transition-transform duration-300 focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950">
               {/* Logo Icon */}
               <div className="shrink-0 transition-transform duration-300 group-hover:scale-110">
                 <Image
@@ -86,17 +86,17 @@ export default function Footer() {
               <div className="flex flex-col gap-2.5">
                 <a
                   href={whatsapp()}
-                  className="inline-flex items-center gap-2.5 rounded-lg text-slate-300 transition-colors hover:text-[#00A88E] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00A88E]/45 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+                  className="inline-flex items-center gap-2.5 rounded-lg text-slate-300 transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/45 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
                 >
-                  <Phone className="size-4 shrink-0 text-[#00A88E]" strokeWidth={2} aria-hidden />
+                  <Phone className="size-4 shrink-0 text-primary" strokeWidth={1.5} aria-hidden />
                   <span className="text-xs font-medium">{CLINIC.phoneDisplay}</span>
                 </a>
 
                 <a
                   href={`mailto:${CLINIC.email}`}
-                  className="inline-flex items-center gap-2.5 rounded-lg text-slate-300 transition-colors hover:text-[#00A88E] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00A88E]/45 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+                  className="inline-flex items-center gap-2.5 rounded-lg text-slate-300 transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/45 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
                 >
-                  <Mail className="size-4 shrink-0 text-[#00A88E]" strokeWidth={2} aria-hidden />
+                  <Mail className="size-4 shrink-0 text-primary" strokeWidth={1.5} aria-hidden />
                   <span className="text-xs font-medium">{CLINIC.email}</span>
                 </a>
               </div>
@@ -115,9 +115,9 @@ export default function Footer() {
                     rel="noopener noreferrer"
                     className={cn(
                       'flex size-10 items-center justify-center rounded-lg border border-white/10 bg-white/4 text-slate-400',
-                      'transition-all duration-200',
-                      'hover:border-[#00A88E]/50 hover:bg-[#00A88E]/15 hover:text-[#a8f0e4] hover:scale-105',
-                      'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00A88E]/50 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950'
+                      'transition-[color,background-color,border-color,transform] duration-200',
+                      'hover:border-primary/50 hover:bg-primary/15 hover:text-[#a8f0e4] hover:scale-105',
+                      'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950'
                     )}
                     aria-label={`Alsakha Medica di ${name}`}
                   >
@@ -149,7 +149,7 @@ export default function Footer() {
                 <p className="text-sm font-semibold text-white">08:00 - 22:00 WITA</p>
               </div>
 
-              <div className="rounded-xl border border-[#00A88E]/30 bg-[#00A88E]/[0.07] p-3 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.04)]">
+              <div className="rounded-xl border border-primary/30 bg-primary/[0.07] p-3 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.04)]">
                 <p className="text-xs font-bold uppercase tracking-wide text-[#a8f0e4]">IGD Darurat</p>
                 <p className="mt-1.5 text-sm text-[#c5f5eb]">24 Jam Setiap Hari</p>
                 <p className="text-sm font-semibold text-white">Siap Melayani</p>
@@ -173,7 +173,7 @@ export default function Footer() {
                     key={slug}
                     className={cn(
                       'flex items-center justify-center',
-                      'transition-all duration-300 ease-out',
+                      'transition-[transform,filter] duration-300 ease-out',
                       'hover:scale-110 hover:brightness-125',
                       'group'
                     )}
@@ -195,7 +195,7 @@ export default function Footer() {
         </div>
 
         <div className="mt-12 border-t border-white/10 pt-8 text-center text-xs text-slate-500 sm:text-sm">
-          <p>© {new Date().getFullYear()} Alsakha Medica. All Rights Reserved.</p>
+          <p>© {new Date().getFullYear()} Alsakha Medica. Hak cipta dilindungi.</p>
         </div>
       </div>
     </footer>

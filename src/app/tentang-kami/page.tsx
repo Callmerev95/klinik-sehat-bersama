@@ -1,9 +1,9 @@
 'use client';
 
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import { PageHero } from '@/components/marketing/PageHero';
-import { fadeUp, stagger, ease } from '@/lib/motion';
+import { fadeUp, fadeUpStatic, stagger, ease } from '@/lib/motion';
 import {
   Building2,
   HeartHandshake,
@@ -50,7 +50,7 @@ const KEUNGGULAN = [
   },
   {
     icon: HeartHandshake,
-    title: 'Service Pelayanan Utama',
+    title: 'Pelayanan Utama',
     text: 'Prioritas utama kami adalah memberikan pelayanan terbaik kepada setiap pasien dengan perhatian penuh pada kualitas dan kepuasan pelanggan.',
   },
   {
@@ -116,7 +116,7 @@ function SectionTitle({
 }) {
   return (
     <div className={cn('mx-auto max-w-2xl text-center', className)}>
-      <p className="text-sm font-semibold uppercase tracking-[0.14em] text-[#00A88E]">{eyebrow}</p>
+      <p className="text-sm font-semibold uppercase tracking-[0.14em] text-primary">{eyebrow}</p>
       <h2
         id={id}
         className="mt-2 text-balance text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl md:text-4xl"
@@ -131,6 +131,8 @@ function SectionTitle({
 }
 
 export default function TentangKamiPage() {
+  const reduce = useReducedMotion();
+  const fadeItem = reduce ? fadeUpStatic : fadeUp;
   return (
     <div className="min-h-0 bg-white">
       <PageHero
@@ -155,24 +157,24 @@ export default function TentangKamiPage() {
           />
 
           <motion.div
-            initial="hidden"
+            initial={reduce ? false : 'hidden'}
             whileInView="visible"
             viewport={{ once: true, margin: '-60px' }}
             variants={stagger}
             className="grid gap-6 md:grid-cols-2 md:gap-8"
           >
             <motion.article
-              variants={fadeUp}
+              variants={fadeItem}
               className={cn(
                 'relative overflow-hidden rounded-2xl border border-slate-200/90 bg-white p-8 shadow-sm',
                 'md:p-10'
               )}
             >
               <div
-                className="absolute -right-8 -top-8 size-32 rounded-full bg-[#00A88E]/[0.07]"
+                className="absolute -right-8 -top-8 size-32 rounded-full bg-primary/[0.07]"
                 aria-hidden
               />
-              <div className="relative flex size-12 items-center justify-center rounded-xl bg-[#00A88E]/10 text-[#00A88E]">
+              <div className="relative flex size-12 items-center justify-center rounded-xl bg-primary/10 text-primary">
                 <Target className="size-6" strokeWidth={2} aria-hidden />
               </div>
               <h3 className="mt-6 text-xl font-semibold tracking-tight text-slate-900">Visi</h3>
@@ -182,17 +184,17 @@ export default function TentangKamiPage() {
             </motion.article>
 
             <motion.article
-              variants={fadeUp}
+              variants={fadeItem}
               className={cn(
-                'relative overflow-hidden rounded-2xl border border-[#00A88E]/20 bg-linear-to-br from-[#00A88E]/6 to-white p-8 shadow-sm',
+                'relative overflow-hidden rounded-2xl border border-primary/20 bg-linear-to-br from-primary/6 to-white p-8 shadow-sm',
                 'md:p-10'
               )}
             >
               <div
-                className="absolute -bottom-10 -left-10 size-40 rounded-full bg-[#00A88E]/10"
+                className="absolute -bottom-10 -left-10 size-40 rounded-full bg-primary/10"
                 aria-hidden
               />
-              <div className="relative flex size-12 items-center justify-center rounded-xl bg-white text-[#00A88E] shadow-sm ring-1 ring-[#00A88E]/15">
+              <div className="relative flex size-12 items-center justify-center rounded-xl bg-white text-primary shadow-sm ring-1 ring-primary/15">
                 <HeartHandshake className="size-6" strokeWidth={2} aria-hidden />
               </div>
               <h3 className="mt-6 text-xl font-semibold tracking-tight text-slate-900">Misi</h3>
@@ -200,7 +202,7 @@ export default function TentangKamiPage() {
                 {MISI_POINTS.map((point, index) => (
                   <li key={point} className="flex gap-3 text-[1.0625rem] leading-relaxed text-slate-600">
                     <span
-                      className="flex size-7 shrink-0 items-center justify-center rounded-lg bg-[#00A88E] text-xs font-bold text-white"
+                      className="flex size-7 shrink-0 items-center justify-center rounded-lg bg-primary text-xs font-bold text-white"
                       aria-hidden
                     >
                       {String.fromCharCode(97 + index)}
@@ -217,13 +219,13 @@ export default function TentangKamiPage() {
       <section className="section-padding border-t border-slate-100 bg-white" aria-labelledby="sejarah-heading">
         <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
           <motion.div
-            initial="hidden"
+            initial={reduce ? false : 'hidden'}
             whileInView="visible"
             viewport={{ once: true, margin: '-40px' }}
-            variants={fadeUp}
+            variants={fadeItem}
             className="mx-auto max-w-3xl text-center"
           >
-            <p className="text-sm font-semibold uppercase tracking-[0.14em] text-[#00A88E]">Perjalanan kami</p>
+            <p className="text-sm font-semibold uppercase tracking-[0.14em] text-primary">Perjalanan kami</p>
             <h2
               id="sejarah-heading"
               className="mt-2 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl"
@@ -232,7 +234,7 @@ export default function TentangKamiPage() {
             </h2>
             <p className="mt-5 text-[1.0625rem] leading-relaxed text-slate-600">
               <strong className="font-semibold text-slate-800">Klinik Alsakha Medica</strong> berdiri sejak{' '}
-              <strong className="font-semibold text-[#00A88E]">2018</strong>, berkembang bersama mitra{' '}
+              <strong className="font-semibold text-primary">2018</strong>, berkembang bersama mitra{' '}
               <strong className="font-semibold text-slate-800">PT. Klinik Indosehat 2003</strong> untuk melayani
               kebutuhan kesehatan perusahaan dan masyarakat di wilayah Sumbawa dengan standar yang jelas.
             </p>
@@ -244,27 +246,32 @@ export default function TentangKamiPage() {
               return (
                 <motion.li
                   key={cab.id}
-                  initial={{ opacity: 0, y: 18 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  initial={reduce ? false : { opacity: 0, y: 18 }}
+                  whileInView={reduce ? undefined : { opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: '-20px' }}
-                  transition={{ duration: 0.45, ease, delay: i * 0.08 }}
+                  transition={{ duration: reduce ? 0.01 : 0.45, ease, delay: reduce ? 0 : Math.min(i, 6) * 0.08 }}
                 >
                   <article className={cn(
                     'card-hover flex h-full flex-col rounded-2xl p-6 sm:p-7',
                     isComingSoon
-                      ? 'relative overflow-hidden border border-[#00A88E]/30 bg-linear-to-br from-[#00A88E]/8 via-white to-[#a8f0e4]/5 shadow-md shadow-[#00A88E]/10'
+                      ? 'relative overflow-hidden border border-primary/30 bg-linear-to-br from-primary/8 via-white to-[#a8f0e4]/5 shadow-md shadow-primary/10'
                       : 'border border-slate-200/90 bg-slate-50/80'
                   )}>
                     {isComingSoon && (
-                      <div className="absolute -right-12 -top-12 size-40 rounded-full bg-[#00A88E]/8 blur-2xl" aria-hidden />
+                      <div className="absolute -right-12 -top-12 size-40 rounded-full bg-primary/8 blur-2xl" aria-hidden />
                     )}
                     <div className={cn(
                       'flex size-12 items-center justify-center rounded-xl text-white',
-                      isComingSoon ? 'bg-linear-to-br from-[#00A88E] to-[#008C76]' : 'bg-[#00A88E]'
+                      isComingSoon ? 'bg-linear-to-br from-primary to-primary-deep' : 'bg-primary'
                     )}>
                       <MapPin className="size-6" strokeWidth={2} aria-hidden />
                     </div>
                     <h3 className="mt-4 text-lg font-semibold tracking-tight text-slate-900">{cab.name}</h3>
+                    {isComingSoon && (
+                      <span className="mt-2 inline-flex w-fit rounded-full bg-primary/10 px-3 py-1 text-xs font-bold uppercase tracking-wider text-primary">
+                        Segera Hadir
+                      </span>
+                    )}
                     <p className={cn(
                       'mt-2 flex-1 text-sm leading-relaxed sm:text-[0.9375rem]',
                       isComingSoon ? 'text-slate-900' : 'text-slate-600'
@@ -278,17 +285,17 @@ export default function TentangKamiPage() {
           </ul>
 
           <motion.div
-            initial="hidden"
+            initial={reduce ? false : 'hidden'}
             whileInView="visible"
             viewport={{ once: true }}
-            variants={fadeUp}
+            variants={fadeItem}
             className="mt-12 flex flex-wrap justify-center gap-3"
           >
             <Link
               href="/pelayanan/"
-              className="inline-flex rounded-xl bg-[#00A88E] px-5 py-2.5 text-sm font-semibold text-white shadow-sm shadow-[#00A88E]/25 transition-colors duration-200 hover:bg-[#008C76]"
+              className="inline-flex rounded-xl bg-primary px-5 py-2.5 text-sm font-semibold text-white shadow-sm shadow-primary/25 transition-colors duration-200 hover:bg-primary-deep focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2"
             >
-              Lihat layanan
+              Lihat Layanan Klinik
             </Link>
           </motion.div>
         </div>
@@ -308,17 +315,17 @@ export default function TentangKamiPage() {
               return (
                 <motion.li
                   key={item.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  initial={reduce ? false : { opacity: 0, y: 20 }}
+                  whileInView={reduce ? undefined : { opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: '-30px' }}
-                  transition={{ duration: 0.45, ease, delay: i * 0.06 }}
+                  transition={{ duration: reduce ? 0.01 : 0.45, ease, delay: reduce ? 0 : Math.min(i, 6) * 0.06 }}
                 >
                   <article
                     className={cn(
                       'card-hover flex h-full flex-col rounded-xl border border-slate-200/90 bg-white p-6 sm:p-7'
                     )}
                   >
-                    <div className="flex size-11 items-center justify-center rounded-xl bg-[#00A88E]/10 text-[#00A88E]">
+                    <div className="flex size-11 items-center justify-center rounded-xl bg-primary/10 text-primary">
                       <Icon className="size-5 shrink-0" strokeWidth={2} aria-hidden />
                     </div>
                     <h3 className="mt-4 text-lg font-semibold tracking-tight text-slate-900">{item.title}</h3>
@@ -344,7 +351,7 @@ export default function TentangKamiPage() {
           />
 
           <motion.ul
-            initial="hidden"
+            initial={reduce ? false : 'hidden'}
             whileInView="visible"
             viewport={{ once: true, margin: '-50px' }}
             variants={stagger}
@@ -354,10 +361,10 @@ export default function TentangKamiPage() {
             {JANJI_PELAYANAN.map((item) => (
               <motion.li
                 key={item}
-                variants={fadeUp}
+                variants={fadeItem}
                 className="flex gap-4 rounded-2xl border border-slate-100 bg-linear-to-r from-slate-50/80 to-white p-5 sm:p-6"
               >
-                <div className="flex size-10 shrink-0 items-center justify-center rounded-full bg-[#00A88E]/10 text-[#00A88E]">
+                <div className="flex size-10 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary">
                   <Sparkles className="size-5" strokeWidth={2} aria-hidden />
                 </div>
                 <p className="text-[0.9375rem] leading-relaxed text-slate-700">{item}</p>

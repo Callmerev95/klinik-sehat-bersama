@@ -77,8 +77,9 @@ const DEFAULT_LAYANAN: LayananUnggulanItem[] = [
 ];
 
 const selengkapnyaButtonClass = cn(
-  'mt-6 inline-flex items-center gap-1.5 text-sm font-semibold',
-  'text-[#00A88E] hover:text-[#008C76] transition-colors'
+  'mt-6 inline-flex min-h-6 items-center gap-1.5 rounded-lg px-2 py-2 -mx-2 text-sm font-semibold',
+  'text-primary hover:text-primary-deep transition-colors',
+  'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50'
 );
 
 /** Kartu Medical Check-Up: highlight premium (badge + ribbon), tombol tetap primary teal. */
@@ -113,7 +114,7 @@ function MedicalCheckUpCard({ item }: { item: LayananUnggulanItem }) {
               'sm:right-20 sm:top-[2.55rem]'
             )}
           >
-            <span className="whitespace-nowrap px-5 text-center text-[8px] font-extrabold uppercase leading-none tracking-wide text-white drop-shadow-[0_1px_1px_rgba(0,0,0,0.35)] sm:px-6 sm:text-[9px] sm:tracking-wider">
+            <span className="whitespace-nowrap px-5 text-center text-[10px] font-extrabold uppercase leading-none tracking-wide text-white drop-shadow-[0_1px_1px_rgba(0,0,0,0.35)] sm:px-6 sm:text-xs sm:tracking-wider">
               Penawaran Istimewa
             </span>
           </div>
@@ -133,7 +134,7 @@ function MedicalCheckUpCard({ item }: { item: LayananUnggulanItem }) {
           </div>
 
           <div
-            className="mb-5 flex size-12 items-center justify-center rounded-xl bg-[#00A88E]/10 text-[#00A88E]"
+            className="mb-5 flex size-12 items-center justify-center rounded-xl bg-primary/10 text-primary"
             aria-hidden
           >
             <Icon className="size-6 shrink-0" strokeWidth={2} />
@@ -146,9 +147,13 @@ function MedicalCheckUpCard({ item }: { item: LayananUnggulanItem }) {
             {MEDICAL_CHECK_UP_DESCRIPTION}
           </p>
 
-          <Link href={href} className={selengkapnyaButtonClass}>
+          <Link
+            href={href}
+            aria-label={`Selengkapnya tentang ${item.title}`}
+            className={selengkapnyaButtonClass}
+          >
             Selengkapnya
-            <span className="text-base leading-none">→</span>
+            <span aria-hidden className="text-base leading-none">→</span>
           </Link>
         </div>
       </article>
@@ -201,7 +206,7 @@ export function LayananUnggulan({ className, items = DEFAULT_LAYANAN }: LayananU
                   )}
                 >
                   <div
-                    className="mb-5 flex size-12 items-center justify-center rounded-xl bg-[#00A88E]/10 text-[#00A88E]"
+                    className="mb-5 flex size-12 items-center justify-center rounded-xl bg-primary/10 text-primary"
                     aria-hidden
                   >
                     <Icon className="size-6 shrink-0" strokeWidth={2} />
@@ -212,9 +217,13 @@ export function LayananUnggulan({ className, items = DEFAULT_LAYANAN }: LayananU
                   <p className="mt-2.5 flex-1 text-[0.9375rem] leading-relaxed text-slate-600">
                     {item.description}
                   </p>
-                  <Link href={href} className={selengkapnyaButtonClass}>
+                  <Link
+                    href={href}
+                    aria-label={`Selengkapnya tentang ${item.title}`}
+                    className={selengkapnyaButtonClass}
+                  >
                     Selengkapnya
-                    <span className="text-base leading-none">→</span>
+                    <span aria-hidden className="text-base leading-none">→</span>
                   </Link>
                 </article>
               </li>

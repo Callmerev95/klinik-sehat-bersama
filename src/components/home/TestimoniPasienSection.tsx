@@ -33,7 +33,7 @@ const DEFAULT_TESTIMONI: TestimoniItem[] = [
     id: 'sari',
     nameAge: 'Ibu Sari, 38 tahun',
     quote:
-      'Medical check-up berjalan terarah; hasilnya dijelaskan tanpa istilah yang membingungkan. Sangat cocok untuk keluarga.',
+      'Medical Check-Up berjalan terarah; hasilnya dijelaskan tanpa istilah yang membingungkan. Sangat cocok untuk keluarga.',
     rating: 4.5,
     imageSrc: '/images/testimoni/ibu-sari.jpg',
   },
@@ -91,10 +91,10 @@ function TestimoniCard({ item }: { item: TestimoniItem }) {
       className={cn(
         'card-hover flex h-full min-h-72 flex-col items-center rounded-3xl border border-slate-200/80 bg-white px-7 py-10 text-center',
         'shadow-[0_1px_3px_rgb(15_23_42/0.06)]',
-        'transition-[border-color] duration-300 hover:border-[#00A88E]/20'
+        'transition-[border-color] duration-300 hover:border-primary/20'
       )}
     >
-      <div className="relative size-18 shrink-0 overflow-hidden rounded-full ring-[3px] ring-[#00A88E]/15 ring-offset-[3px] ring-offset-white sm:size-19">
+      <div className="relative size-18 shrink-0 overflow-hidden rounded-full ring-[3px] ring-primary/15 ring-offset-[3px] ring-offset-white sm:size-19">
         <Image
           src={item.imageSrc}
           alt={`Foto ilustrasi: ${item.nameAge}`}
@@ -106,7 +106,7 @@ function TestimoniCard({ item }: { item: TestimoniItem }) {
       </div>
       <p className="mt-6 font-semibold tracking-tight text-slate-900 sm:text-lg">{item.nameAge}</p>
       <StarRating value={item.rating} className="mt-3 justify-center" />
-      <Quote className="mt-6 size-7 text-[#00A88E]/20 sm:size-8" strokeWidth={1.5} aria-hidden />
+      <Quote className="mt-6 size-7 text-primary/20 sm:size-8" strokeWidth={1.5} aria-hidden />
       <blockquote className="mt-2 flex-1 text-pretty text-[0.9375rem] leading-relaxed text-slate-600 sm:text-base">
         <p>&ldquo;{item.quote}&rdquo;</p>
       </blockquote>
@@ -135,7 +135,7 @@ export function TestimoniPasienSection({ className, items = DEFAULT_TESTIMONI }:
     >
       <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
         <header className="mx-auto max-w-2xl text-center">
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#00A88E]/90 sm:text-[0.8125rem]">
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary/90 sm:text-[0.8125rem]">
             Suara pasien
           </p>
           <h2

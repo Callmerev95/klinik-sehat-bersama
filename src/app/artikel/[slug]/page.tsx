@@ -58,19 +58,19 @@ export default async function ArtikelDetailPage({ params }: ArtikelDetailPagePro
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
       <section className="relative isolate flex min-h-[50vh] w-full items-end overflow-hidden md:min-h-[55vh] bg-slate-900">
-        <div className="absolute inset-0 -z-10 bg-linear-to-br from-[#003d36]/90 via-[#00A88E]/60 to-slate-900/80" />
+        <div className="absolute inset-0 -z-10 bg-linear-to-br in oklab from-[#003d36]/90 via-primary/60 to-slate-900/80" />
 
         <div className="relative z-10 mx-auto w-full max-w-7xl px-5 pb-16 pt-28 sm:px-6 md:py-24 lg:px-8">
           <div className="max-w-3xl">
             <div className="mb-4 inline-block">
-              <span className="px-3 py-1 rounded-full text-sm font-medium bg-[#00A88E]/20 text-[#00A88E]">
+              <span className="px-3 py-1 rounded-full text-sm font-medium bg-white/15 text-white">
                 {article.meta.category}
               </span>
             </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-tight mb-4">
+            <h1 className="text-balance text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-tight mb-4">
               {article.meta.title}
             </h1>
-            <p className="text-lg text-slate-200">{article.meta.displayDate}</p>
+            <p className="text-lg text-slate-200 tabular-nums">{article.meta.displayDate}</p>
           </div>
         </div>
       </section>
@@ -83,21 +83,21 @@ export default async function ArtikelDetailPage({ params }: ArtikelDetailPagePro
       </article>
 
       {/* CTA Section */}
-      <section className="bg-linear-to-r from-[#003d36] to-[#00A88E] py-16 md:py-24">
+      <section className="bg-linear-to-r in oklab from-[#003d36] to-primary py-16 md:py-24">
         <div className="mx-auto max-w-3xl px-5 sm:px-6 lg:px-8 text-center">
-          <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
+          <h2 className="text-balance text-2xl md:text-3xl font-bold text-white mb-4">
             Konsultasi dengan Dokter Profesional
-          </h3>
-          <p className="text-lg text-slate-100 mb-8">
+          </h2>
+          <p className="text-pretty text-lg text-slate-100 mb-8">
             Dapatkan saran medis langsung dari tim dokter berpengalaman kami melalui WhatsApp
           </p>
           <a
-            href={whatsapp('Halo Alsakha Medika, saya ingin berkonsultasi')}
+            href={whatsapp('Halo Alsakha Medica, saya ingin berkonsultasi')}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-semibold text-[#003d36] bg-white hover:bg-slate-50 transition-colors duration-200"
           >
-            <span>💬</span>
+            <span aria-hidden>💬</span>
             Hubungi Kami via WhatsApp
           </a>
         </div>

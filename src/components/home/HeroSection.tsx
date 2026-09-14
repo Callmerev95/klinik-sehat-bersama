@@ -1,10 +1,11 @@
 'use client';
 
 import { useCallback } from 'react';
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import { Stethoscope } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
+import { fadeUp, fadeUpStatic, stagger } from '@/lib/motion';
 
 const HERO_IMAGE = '/images/Hero/Hero-Home.webp';
 
@@ -13,28 +14,8 @@ const HERO_COPY = {
   title: 'Alsakha Medica',
   subheadline:
     '"Setia Dikala Sehat - Peduli Dikala Sakit"',
-  primaryCta: 'layanan Unggulan Kami',
+  primaryCta: 'Lihat Layanan Unggulan',
 } as const;
-
-const motionContainer = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.14,
-    },
-  },
-};
-
-const motionItem = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.52, ease: [0.22, 1, 0.36, 1] as const },
-  },
-};
 
 const LAYANAN_UNGGULAN_SECTION_ID = 'layanan-unggulan';
 
@@ -49,6 +30,8 @@ export function HeroSection() {
     });
   }, []);
 
+  const reduce = useReducedMotion();
+
   return (
     <section
       className="relative isolate flex min-h-screen w-full items-center justify-center overflow-hidden"
@@ -61,7 +44,7 @@ export function HeroSection() {
       />
 
       <div
-        className="absolute inset-0 -z-10 bg-linear-to-br from-[#003d36]/90 via-[#00A88E]/55 to-black/72"
+        className="absolute inset-0 -z-10 bg-linear-to-br in oklab from-[#003d36]/90 via-primary/55 to-black/72"
         aria-hidden
       />
       <div className="absolute inset-0 -z-10 bg-black/30" aria-hidden />
@@ -72,14 +55,15 @@ export function HeroSection() {
 
       <motion.div
         className="relative z-10 mx-auto flex w-full max-w-4xl flex-col items-center px-5 py-16 text-center sm:px-8 md:max-w-5xl md:px-10"
-        variants={motionContainer}
-        initial="hidden"
+        variants={stagger}
+        initial={reduce ? false : 'hidden'}
         animate="visible"
       >
-        <motion.div variants={motionItem} className="mb-5 md:mb-6">
+        <motion.div variants={reduce ? fadeUpStatic : fadeUp} className="mb-5 md:mb-6">
           <span className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-2 text-xs font-medium text-white/95 shadow-sm backdrop-blur-md sm:text-sm">
             <Stethoscope
               className="size-3.5 shrink-0 text-[#7fe8d9] sm:size-4"
+              strokeWidth={1.5}
               aria-hidden
             />
             {HERO_COPY.eyebrow}
@@ -88,27 +72,27 @@ export function HeroSection() {
 
         <motion.h1
           id="hero-heading"
-          variants={motionItem}
+          variants={reduce ? fadeUpStatic : fadeUp}
           className="mb-4 max-w-[18ch] text-balance text-4xl font-bold leading-[1.1] tracking-tight text-white sm:max-w-none sm:text-5xl md:text-6xl lg:text-7xl"
         >
           {HERO_COPY.title}
         </motion.h1>
 
         <motion.p
-          variants={motionItem}
+          variants={reduce ? fadeUpStatic : fadeUp}
           className="mb-10 max-w-2xl text-base leading-relaxed text-white/88 sm:text-lg md:text-xl"
         >
           {HERO_COPY.subheadline}
         </motion.p>
 
         <motion.div
-          variants={motionItem}
+          variants={reduce ? fadeUpStatic : fadeUp}
           className="flex w-full max-w-md flex-col gap-3 sm:max-w-none sm:flex-row sm:justify-center sm:gap-4"
         >
           <Button
             type="button"
             onClick={scrollToLayananUnggulan}
-            className="h-auto min-h-12 w-full rounded-xl border-0 bg-primary px-8 py-3.5 text-base font-semibold text-white shadow-lg shadow-black/25 transition-[transform,box-shadow] hover:bg-[#008C76] hover:shadow-xl hover:shadow-black/20 sm:w-auto sm:min-w-55"
+            className="h-auto min-h-12 w-full rounded-xl border-0 bg-primary px-8 py-3.5 text-base font-semibold text-white shadow-lg shadow-black/25 transition-[transform,box-shadow] hover:bg-primary-deep hover:shadow-xl hover:shadow-black/20 sm:w-auto sm:min-w-55"
           >
             {HERO_COPY.primaryCta}
           </Button>

@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import { PageHero } from '@/components/marketing/PageHero';
 import { ease, stagger } from '@/lib/motion';
 import {
@@ -24,7 +24,7 @@ function PartnerCard({ partner, index }: PartnerCardProps) {
   return (
     <MotionCardFrame index={index}>
         {/* Partner Image */}
-        <div className="relative h-48 w-full overflow-hidden bg-slate-100 sm:h-52">
+        <div className="relative h-48 w-full overflow-hidden bg-slate-100 ring-1 ring-inset ring-black/10 sm:h-52">
           <Image
             src={partner.image}
             alt={partner.name}
@@ -55,7 +55,7 @@ function PartnerCard({ partner, index }: PartnerCardProps) {
           </div>
 
           {/* Partner Name */}
-          <h3 className="text-lg font-bold tracking-tight text-slate-900 mb-2 line-clamp-2 leading-snug">
+          <h3 title={partner.name} className="text-lg font-bold tracking-tight text-slate-900 mb-2 line-clamp-2 leading-snug">
             {partner.name}
           </h3>
 
@@ -68,13 +68,15 @@ function PartnerCard({ partner, index }: PartnerCardProps) {
           {partner.detail && (
             <Link
               href={`/partner/${partner.slug}`}
+              aria-label={`Selengkapnya tentang ${partner.name}`}
               className={cn(
-                'inline-flex items-center gap-1.5 text-sm font-semibold',
-                'text-[#00A88E] hover:text-[#008C76] transition-colors'
+                'inline-flex min-h-6 items-center gap-1.5 rounded-lg px-2 py-2 -mx-2 text-sm font-semibold',
+                'text-primary hover:text-primary-deep transition-colors',
+                'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50'
               )}
             >
               Selengkapnya
-              <span className="text-base leading-none">→</span>
+              <span aria-hidden className="text-base leading-none">→</span>
             </Link>
           )}
         </div>
@@ -83,13 +85,14 @@ function PartnerCard({ partner, index }: PartnerCardProps) {
 }
 
 export default function PartnerPage() {
+  const reduce = useReducedMotion();
   return (
     <div className="min-h-0 bg-white">
       {/* Hero Section */}
       <PageHero
         image="/images/Hero/Hero-Partner.jpeg"
         labelledBy="partner-hero-heading"
-        heading="Mitra & Partner Kami"
+        heading="Mitra Kami"
         description="Kerjasama strategis dengan institusi terpercaya memastikan kami memberikan layanan kesehatan terbaik untuk seluruh masyarakat Sumbawa dan sekitarnya."
         quote="“Bersama membangun ekosistem kesehatan yang berkelanjutan”"
         alignment="left"
@@ -102,10 +105,10 @@ export default function PartnerPage() {
         <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
           {/* Section Header */}
           <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={reduce ? false : { opacity: 0, y: 24 }}
+            whileInView={reduce ? undefined : { opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-50px' }}
-            transition={{ duration: 0.45, ease }}
+            transition={{ duration: reduce ? 0.01 : 0.45, ease }}
             className="mb-12 text-center md:mb-14"
           >
             <h2
@@ -121,7 +124,7 @@ export default function PartnerPage() {
 
           {/* Partners Grid */}
           <motion.div
-            initial="hidden"
+            initial={reduce ? false : 'hidden'}
             whileInView="visible"
             viewport={{ once: true, margin: '-50px' }}
             variants={stagger}

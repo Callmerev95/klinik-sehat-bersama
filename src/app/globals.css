@@ -1,5 +1,28 @@
 @import "tailwindcss";
 
+@theme {
+  /* Brand ramp: solid/deep AA-safe with white text (5.29 / 6.47).
+     Vivid #00A88E retained only for large-scale decorative use. */
+  --color-primary: #007a65;
+  --color-primary-deep: #006b58;
+  --color-primary-foreground: #ffffff;
+
+  /* shadcn neutral surface system (referenced by ui/*) */
+  --color-background: #ffffff;
+  --color-foreground: #0f172a;
+  --color-muted: #f1f5f9;
+  --color-muted-foreground: #475569;
+  --color-card: #ffffff;
+  --color-card-foreground: #0f172a;
+  --color-border: #e2e8f0;
+  --color-input: #e2e8f0;
+  --color-ring: #007a65;
+  --color-destructive: #dc2626;
+  --color-destructive-foreground: #ffffff;
+  --color-secondary: #f1f5f9;
+  --color-secondary-foreground: #0f172a;
+}
+
 @layer base {
   html[data-scroll-behavior="smooth"] {
     scroll-behavior: smooth;
@@ -33,5 +56,14 @@
 
   .nav-link {
     transition: color 0.3s ease;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html[data-scroll-behavior="smooth"] {
+    scroll-behavior: auto;
+  }
+  .card-hover:hover {
+    transform: none;
   }
 }

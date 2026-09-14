@@ -3,10 +3,9 @@
 import { useCallback, useEffect, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { ChevronUp } from 'lucide-react';
+import { ease } from '@/lib/motion';
 
 const SCROLL_THRESHOLD_PX = 400;
-
-const ease = [0.22, 1, 0.36, 1] as const;
 
 export default function BackToTop() {
   const [visible, setVisible] = useState(false);
@@ -21,11 +20,12 @@ export default function BackToTop() {
   }, []);
 
   const scrollToTop = useCallback(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
   }, []);
 
   return (
-    <AnimatePresence mode="wait">
+    <AnimatePresence initial={false} mode="wait">
       {visible ? (
         <motion.button
           key="back-to-top"
@@ -39,10 +39,10 @@ export default function BackToTop() {
           onClick={scrollToTop}
           className={[
             'fixed z-40 flex size-12 items-center justify-center rounded-full',
-            'bg-[#00A88E] text-white shadow-md shadow-[#00A88E]/25',
+            'bg-primary text-white shadow-md shadow-primary/25',
             'ring-1 ring-white/15 ring-offset-0',
-            'transition-colors duration-200 hover:bg-[#008C76] hover:shadow-lg hover:shadow-[#00A88E]/35',
-            'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00A88E]/50 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950',
+            'transition-colors duration-200 hover:bg-primary-deep hover:shadow-lg hover:shadow-primary/35',
+            'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950',
             'bottom-[max(1.5rem,env(safe-area-inset-bottom,0px)+0.75rem)] right-5 sm:bottom-8 sm:right-6 lg:bottom-10 lg:right-8',
           ].join(' ')}
           aria-label="Kembali ke atas halaman"

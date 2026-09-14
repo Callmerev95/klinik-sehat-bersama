@@ -43,11 +43,11 @@ export function LokasiKamiSection() {
           {/* Peta */}
           <div className="flex min-h-0 flex-col">
             <div className="mb-3 flex shrink-0 items-start gap-3 text-left sm:mb-3.5">
-              <span className="mt-0.5 flex size-10 shrink-0 items-center justify-center rounded-xl bg-[#00A88E]/10 text-[#00A88E]">
-                <MapPin className="size-4.5" strokeWidth={2} aria-hidden />
+              <span className="mt-0.5 flex size-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                <MapPin className="size-4.5" strokeWidth={1.5} aria-hidden />
               </span>
               <div className="min-w-0 pt-0.5">
-                <p className="text-[0.6875rem] font-semibold uppercase tracking-[0.12em] text-[#00A88E]">
+                <p className="text-[0.6875rem] font-semibold uppercase tracking-[0.12em] text-primary">
                   Cabang utama
                 </p>
                 <p className="mt-1 text-sm font-medium leading-snug text-slate-800 sm:text-[0.9375rem]">
@@ -101,10 +101,10 @@ export function LokasiKamiSection() {
               <li>
                 <a
                   href={PHONE_HREF}
-                  className="group flex gap-3 rounded-xl py-0.5 text-slate-700 transition-colors hover:text-[#00A88E] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00A88E]/40 focus-visible:ring-offset-2"
+                  className="group flex gap-3 rounded-xl py-0.5 text-slate-700 transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2"
                 >
-                  <span className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-[#00A88E]/10 text-[#00A88E]">
-                    <Phone className="size-4" strokeWidth={2} aria-hidden />
+                  <span className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                    <Phone className="size-4" strokeWidth={1.5} aria-hidden />
                   </span>
                   <span className="min-w-0">
                     <span className="block text-[0.6875rem] font-semibold uppercase tracking-wide text-slate-500">
@@ -117,10 +117,10 @@ export function LokasiKamiSection() {
               <li>
                 <a
                   href={`mailto:${EMAIL}`}
-                  className="group flex gap-3 rounded-xl py-0.5 text-slate-700 transition-colors hover:text-[#00A88E] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00A88E]/40 focus-visible:ring-offset-2"
+                  className="group flex gap-3 rounded-xl py-0.5 text-slate-700 transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2"
                 >
-                  <span className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-[#00A88E]/10 text-[#00A88E]">
-                    <Mail className="size-4" strokeWidth={2} aria-hidden />
+                  <span className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                    <Mail className="size-4" strokeWidth={1.5} aria-hidden />
                   </span>
                   <span className="min-w-0">
                     <span className="block text-[0.6875rem] font-semibold uppercase tracking-wide text-slate-500">
@@ -132,12 +132,12 @@ export function LokasiKamiSection() {
               </li>
               <li className="border-t border-slate-100 pt-4">
                 <div className="flex gap-3">
-                  <span className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-[#00A88E]/10 text-[#00A88E]">
-                    <Clock className="size-4" strokeWidth={2} aria-hidden />
+                  <span className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                    <Clock className="size-4" strokeWidth={1.5} aria-hidden />
                   </span>
                   <div className="min-w-0 space-y-2.5 text-slate-600">
-                    <div className="rounded-xl border border-[#00A88E]/20 bg-[#00A88E]/10 px-3 py-2">
-                      <p className="text-[0.6875rem] font-bold uppercase tracking-wide text-[#00A88E]">
+                    <div className="rounded-xl border border-primary/20 bg-primary/10 px-3 py-2">
+                      <p className="text-[0.6875rem] font-bold uppercase tracking-wide text-primary">
                         IGD &amp; Emergency
                       </p>
                       <p className="mt-0.5 text-sm font-medium text-slate-800">24 jam</p>
@@ -152,14 +152,14 @@ export function LokasiKamiSection() {
                 href="/tentang-kami/#sejarah-heading"
                 className={cn(
                   'inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl',
-                  'text-base font-semibold text-[#00A88E]',
-                  'border border-[#00A88E]/30 bg-[#00A88E]/5',
-                  'transition-all duration-200',
-                  'hover:border-[#00A88E]/60 hover:bg-[#00A88E]/10 hover:-translate-y-0.5'
+                  'text-base font-semibold text-primary',
+                  'border border-primary/30 bg-primary/5',
+                  'transition-[color,background-color,border-color,transform] duration-200',
+                  'hover:border-primary/60 hover:bg-primary/10 hover:-translate-y-0.5'
                 )}
               >
                 Lihat Semua Cabang
-                <ChevronRight className="w-5 h-5" />
+                <ChevronRight className="w-5 h-5" aria-hidden />
               </Link>
             </div>
           </aside>

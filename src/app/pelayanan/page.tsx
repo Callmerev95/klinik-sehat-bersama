@@ -16,7 +16,7 @@ import {
   Siren,
   Stethoscope,
 } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import { PageHero } from '@/components/marketing/PageHero';
 import { ease } from '@/lib/motion';
 
@@ -200,7 +200,7 @@ const LAYANAN: readonly PelayananItem[] = [
   {
     id: 'free-disabilities-care',
     icon: CheckCircle2,
-    title: 'Free Disabilities Care',
+    title: 'Layanan Disabilitas Gratis',
     description:
       'Program layanan kesehatan khusus untuk pasien dengan kondisi disabilitas, memastikan akses penuh ke fasilitas kesehatan yang inklusif, nyaman, dan berkelanjutan sesuai kebutuhan.',
     highlights: [
@@ -212,6 +212,7 @@ const LAYANAN: readonly PelayananItem[] = [
 ];
 
 export default function PelayananPage() {
+  const reduce = useReducedMotion();
   return (
     <div className="min-h-0 bg-white">
       <PageHero
@@ -241,16 +242,16 @@ export default function PelayananPage() {
                   key={item.id}
                   id={item.id}
                   className="h-full scroll-mt-24"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  initial={reduce ? false : { opacity: 0, y: 20 }}
+                  whileInView={reduce ? undefined : { opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: '-30px' }}
-                  transition={{ duration: 0.45, ease, delay: i * 0.06 }}
+                  transition={{ duration: reduce ? 0.01 : 0.45, ease, delay: reduce ? 0 : Math.min(i, 6) * 0.06 }}
                 >
                   <Card
                     className={cn(
                       'card-hover flex h-full flex-col gap-0 border border-slate-200/90 bg-white py-0 shadow-none ring-0',
                       item.featured &&
-                      'border-amber-300/80 ring-2 ring-[#00A88E]/15 ring-offset-0'
+                      'border-amber-300/80 ring-2 ring-primary/15 ring-offset-0'
                     )}
                   >
                     <CardHeader className="gap-4 border-b border-slate-100 px-6 pb-5 pt-6 sm:px-7 sm:pt-7">
@@ -268,12 +269,12 @@ export default function PelayananPage() {
                         </div>
                       ) : null}
                       <div
-                        className="flex size-12 items-center justify-center rounded-xl bg-[#00A88E]/10 text-[#00A88E]"
+                        className="flex size-12 items-center justify-center rounded-xl bg-primary/10 text-primary"
                         aria-hidden
                       >
                         <Icon className="size-6 shrink-0" strokeWidth={2} />
                       </div>
-                      <CardTitle className="font-heading text-lg font-semibold leading-snug tracking-tight text-slate-900 sm:text-xl">
+                      <CardTitle className="text-lg font-semibold leading-snug tracking-tight text-slate-900 sm:text-xl">
                         {item.title}
                       </CardTitle>
                     </CardHeader>
@@ -289,7 +290,7 @@ export default function PelayananPage() {
                             className="flex gap-2.5 text-sm leading-snug text-slate-700"
                           >
                             <CheckCircle2
-                              className="mt-0.5 size-4.5 shrink-0 text-[#00A88E]"
+                              className="mt-0.5 size-4.5 shrink-0 text-primary"
                               strokeWidth={2}
                               aria-hidden
                             />

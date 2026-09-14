@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import { PageHero } from '@/components/marketing/PageHero';
 import { stagger } from '@/lib/motion';
 import { MotionCardFrame } from '@/components/marketing/MotionCardFrame';
@@ -54,7 +54,7 @@ function DoctorCard({ doctor, index }: { doctor: (typeof DOCTORS)[number]; index
   return (
     <MotionCardFrame index={index}>
         {/* Doctor Photo Section - Portrait */}
-        <div className="relative w-full overflow-hidden bg-slate-100" style={{ aspectRatio: '3/4' }}>
+        <div className="relative w-full overflow-hidden bg-slate-100 ring-1 ring-inset ring-black/10" style={{ aspectRatio: '3/4' }}>
           <Image
             src={doctor.image}
             alt={doctor.name}
@@ -69,18 +69,18 @@ function DoctorCard({ doctor, index }: { doctor: (typeof DOCTORS)[number]; index
         <div className="flex flex-1 flex-col px-5 py-6 sm:px-6 sm:py-7">
           {/* Experience Badge */}
           <div className="mb-4 flex items-center gap-2">
-            <span className="inline-flex rounded-full bg-[#00A88E]/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-[#00A88E]">
+            <span className="inline-flex rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-primary">
               {doctor.experience}
             </span>
           </div>
 
           {/* Doctor Name */}
-          <h3 className="text-lg font-bold tracking-tight text-slate-900 mb-2 line-clamp-2 leading-snug">
+          <h3 title={doctor.name} className="text-lg font-bold tracking-tight text-slate-900 mb-2 line-clamp-2 leading-snug">
             {doctor.name}
           </h3>
 
           {/* Specialization */}
-          <p className="text-base font-semibold text-[#00A88E] mb-3">
+          <p className="text-base font-semibold text-primary mb-3">
             {doctor.specialization}
           </p>
 
@@ -96,15 +96,15 @@ function DoctorCard({ doctor, index }: { doctor: (typeof DOCTORS)[number]; index
             rel="noreferrer"
             className={cn(
               'inline-flex w-full items-center justify-center rounded-lg',
-              'bg-[#00A88E] px-5 py-2.5 text-sm font-semibold text-white',
-              'shadow-md shadow-[#00A88E]/30',
-              'transition-all duration-200',
-              'hover:bg-[#008C76] hover:shadow-lg hover:shadow-[#00A88E]/40 hover:-translate-y-0.5',
-              'active:translate-y-0 active:shadow-sm',
-              'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00A88E] focus-visible:ring-offset-2'
+              'bg-primary px-5 py-2.5 text-sm font-semibold text-white',
+              'shadow-md shadow-primary/30',
+              'transition-[color,background-color,box-shadow,transform] duration-200',
+              'hover:bg-primary-deep hover:shadow-lg hover:shadow-primary/40 hover:-translate-y-0.5',
+              'active:translate-y-0 active:scale-0.96 active:shadow-sm',
+              'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2'
             )}
           >
-            Lihat Jadwal & Hubungi
+            Hubungi via WhatsApp
           </a>
         </div>
       </MotionCardFrame>
@@ -112,6 +112,7 @@ function DoctorCard({ doctor, index }: { doctor: (typeof DOCTORS)[number]; index
 }
 
 export default function TimDokterPage() {
+  const reduce = useReducedMotion();
   return (
     <div className="min-h-0 bg-white">
       <PageHero
@@ -134,7 +135,7 @@ export default function TimDokterPage() {
             Daftar dokter klinik
           </h2>
           <motion.div
-            initial="hidden"
+            initial={reduce ? false : 'hidden'}
             whileInView="visible"
             viewport={{ once: true, margin: '-50px' }}
             variants={stagger}

@@ -16,13 +16,13 @@ export default async function PartnerDetailPage({ params }: PartnerDetailPagePro
     return (
       <div className="flex min-h-screen items-center justify-center bg-linear-to-b from-slate-50 to-white px-4">
         <div className="text-center">
-          <h1 className="text-3xl font-bold text-slate-900">Partner Tidak Ditemukan</h1>
+          <h1 className="text-3xl font-bold text-slate-900">Mitra Tidak Ditemukan</h1>
           <p className="mt-2 text-slate-600">
-            Maaf, halaman mitra yang Anda cari tidak tersedia.
+            Mitra yang Anda cari tidak tersedia atau sudah dipindahkan. Kembali ke daftar mitra untuk memilih mitra lain.
           </p>
           <Link
             href="/partner"
-            className="mt-6 inline-flex items-center gap-2 rounded-lg bg-[#00A88E] px-6 py-3 font-medium text-white transition-all duration-200 hover:bg-[#009076] hover:scale-105"
+            className="mt-6 inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 font-medium text-white transition-[color,background-color,transform] duration-200 hover:bg-primary-deep hover:scale-105 active:scale-0.96"
           >
             Kembali ke Halaman Mitra
           </Link>
@@ -44,7 +44,7 @@ export async function generateMetadata({ params }: PartnerDetailPageProps) {
 
   if (!partner || !partner.detail) {
     return {
-      title: 'Partner Tidak Ditemukan - Alsakha Medica',
+      title: 'Mitra Tidak Ditemukan - Alsakha Medica',
       description: 'Halaman mitra tidak ditemukan di website Alsakha Medica.',
     };
   }

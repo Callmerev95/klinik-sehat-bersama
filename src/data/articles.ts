@@ -19,11 +19,11 @@ export const ARTICLES: Article[] = [
     excerpt:
       'Pelajari tentang Hantavirus, gejala, cara penularan, dan langkah-langkah pencegahan yang efektif untuk melindungi diri dan keluarga.',
     meta: {
-      title: 'Hantavirus: Penyakit Langka dari Tikus yang Sedang Viral, Ini yang Harus Kamu Tahu',
+      title: 'Hantavirus: Penyakit Langka dari Tikus yang Sedang Viral, Ini yang Perlu Anda Tahu',
       date: '2026-05-09',
       displayDate: '9 Mei 2026',
       category: 'Pencegahan',
-      author: 'Tim Dokter Alsakha Medika',
+      author: 'Tim Dokter Alsakha Medica',
       thumbnail: '/images/Articles/hanta-virus.jpg',
     },
   },
@@ -32,9 +32,9 @@ export const ARTICLES: Article[] = [
     excerpt:
       'Pemeriksaan kesehatan rutin membantu mendeteksi penyakit pada tahap awal sebelum berkembang menjadi kondisi serius.',
     meta: {
-      title: 'Pentingnya Medical Check Up Rutin untuk Deteksi Dini Penyakit',
+      title: 'Pentingnya Medical Check-Up Rutin untuk Deteksi Dini Penyakit',
       date: '2026-04-10',
-      displayDate: '12 April 2026',
+      displayDate: '10 April 2026',
       category: 'Pencegahan',
       author: 'Tim Dokter Alsakha Medica',
       thumbnail: '/images/Articles/pentingnya-mcu.jpg',
@@ -71,9 +71,9 @@ export const ARTICLES: Article[] = [
     excerpt:
       'Aktivitas fisik teratur tidak hanya meningkatkan stamina, tetapi juga menjaga kesehatan organ-organ vital tubuh Anda.',
     meta: {
-      title: 'Manfaat Olahraga Rutin untuk Kesehatan Jantung dan Paru-Paru',
+      title: 'Olahraga Rutin untuk Kesehatan Optimal - Tips & Manfaat',
       date: '2025-05-22',
-      displayDate: '8 April 2026',
+      displayDate: '22 Mei 2025',
       category: 'Gaya Hidup Sehat',
       author: 'Dr. Alsakha',
       thumbnail: '/images/Articles/olahraga-kesehatan.jpg',
@@ -84,9 +84,9 @@ export const ARTICLES: Article[] = [
     excerpt:
       'Stres berkepanjangan dapat memicu berbagai penyakit. Temukan cara-cara mudah untuk mengelola stres dengan efektif.',
     meta: {
-      title: 'Teknik Manajemen Stres Sederhana yang Bisa Anda Lakukan Setiap Hari',
+      title: 'Manajemen Stres Efektif untuk Kesehatan Mental & Fisik',
       date: '2025-06-18',
-      displayDate: '5 April 2026',
+      displayDate: '18 Juni 2025',
       category: 'Kesehatan Mental',
       author: 'Dr. Alsakha',
       thumbnail: '/images/Articles/manajemen-stres.jpg',
@@ -97,9 +97,9 @@ export const ARTICLES: Article[] = [
     excerpt:
       'Vaksinasi adalah investasi jangka panjang untuk kesehatan anak. Pelajari jadwal vaksinasi yang direkomendasikan.',
     meta: {
-      title: 'Jadwal Lengkap Vaksinasi Anak dan Pentingnya Vaksin untuk Imunitas',
+      title: 'Jadwal Vaksinasi Lengkap - Perlindungan Kesehatan Sepanjang Hidup',
       date: '2025-07-10',
-      displayDate: '2 April 2026',
+      displayDate: '10 Juli 2025',
       category: 'Pencegahan',
       author: 'Dr. Alsakha',
       thumbnail: '/images/Articles/vaksinasi-jadwal.jpg',
