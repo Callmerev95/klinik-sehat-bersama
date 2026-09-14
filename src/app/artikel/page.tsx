@@ -7,78 +7,15 @@ import { MotionCardFrame } from '@/components/marketing/MotionCardFrame';
 import { Card } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
 import { Calendar, ChevronRight } from 'lucide-react';
+import { ARTICLES, type Article } from '@/data/articles';
 
-const ARTICLES = [
-  {
-    id: 'artikel-hantavirus',
-    title: 'Hantavirus: Penyakit Langka dari Tikus yang Sedang Viral, Ini yang Harus Kamu Tahu',
-    category: 'Pencegahan',
-    excerpt: 'Pelajari tentang Hantavirus, gejala, cara penularan, dan langkah-langkah pencegahan yang efektif untuk melindungi diri dan keluarga.',
-    image: '/images/Articles/hanta-virus.jpg',
-    date: '9 Mei 2026',
-    slug: 'hantavirus-penyakit-langka-dari-tikus',
-  },
-  {
-    id: 'artikel-mcu-rutin',
-    title: 'Pentingnya Medical Check Up Rutin untuk Deteksi Dini Penyakit',
-    category: 'Pencegahan',
-    excerpt: 'Pemeriksaan kesehatan rutin membantu mendeteksi penyakit pada tahap awal sebelum berkembang menjadi kondisi serius.',
-    image: '/images/Articles/pentingnya-mcu.jpg',
-    date: '12 April 2026',
-    slug: 'pentingnya-medical-check-up',
-  },
-  {
-    id: 'artikel-nutrisi-sehat',
-    title: '10 Makanan Sehat yang Harus Anda Konsumsi Setiap Hari',
-    category: 'Nutrisi',
-    excerpt: 'Nutrisi yang tepat adalah fondasi kesehatan. Pelajari makanan-makanan bergizi yang mudah ditemukan dan terjangkau.',
-    image: '/images/Articles/makanan-sehat.jpg',
-    date: '12 April 2026',
-    slug: 'makanan-sehat-harian',
-  },
-  {
-    id: 'artikel-hipertensi',
-    title: 'Kenali Gejala Hipertensi dan Cara Mencegahnya Sejak Dini',
-    category: 'Penyakit Umum',
-    excerpt: 'Tekanan darah tinggi sering disebut "silent killer". Ketahui gejala awal dan strategi pencegahan yang efektif.',
-    image: '/images/Articles/hipertensi.jpg',
-    date: '10 April 2026',
-    slug: 'hipertensi-pencegahan',
-  },
-  {
-    id: 'artikel-olahraga-rutin',
-    title: 'Manfaat Olahraga Rutin untuk Kesehatan Jantung dan Paru-Paru',
-    category: 'Gaya Hidup Sehat',
-    excerpt: 'Aktivitas fisik teratur tidak hanya meningkatkan stamina, tetapi juga menjaga kesehatan organ-organ vital tubuh Anda.',
-    image: '/images/Articles/olahraga-kesehatan.jpg',
-    date: '8 April 2026',
-    slug: 'olahraga-kesehatan',
-  },
-  {
-    id: 'artikel-stress-management',
-    title: 'Teknik Manajemen Stres Sederhana yang Bisa Anda Lakukan Setiap Hari',
-    category: 'Kesehatan Mental',
-    excerpt: 'Stres berkepanjangan dapat memicu berbagai penyakit. Temukan cara-cara mudah untuk mengelola stres dengan efektif.',
-    image: '/images/Articles/manajemen-stres.jpg',
-    date: '5 April 2026',
-    slug: 'manajemen-stres',
-  },
-  {
-    id: 'artikel-vaksinasi',
-    title: 'Jadwal Lengkap Vaksinasi Anak dan Pentingnya Vaksin untuk Imunitas',
-    category: 'Pencegahan',
-    excerpt: 'Vaksinasi adalah investasi jangka panjang untuk kesehatan anak. Pelajari jadwal vaksinasi yang direkomendasikan.',
-    image: '/images/Articles/vaksinasi-jadwal.jpg',
-    date: '2 April 2026',
-    slug: 'vaksinasi-jadwal',
-  },
-] as const;
+
 
 function ArticleCard({
   article,
   index,
 }: {
-  article: (typeof ARTICLES)[number];
+  article: Article;
   index: number;
 }) {
   const categoryColors: Record<string, string> = {
@@ -89,7 +26,7 @@ function ArticleCard({
     'Kesehatan Mental': 'bg-purple-50 text-purple-700',
   };
 
-  const categoryColor = categoryColors[article.category] || 'bg-slate-50 text-slate-700';
+  const categoryColor = categoryColors[article.meta.category] || 'bg-slate-50 text-slate-700';
 
   return (
     <MotionCardFrame
@@ -105,8 +42,8 @@ function ArticleCard({
         {/* Article Thumbnail Section - 16:9 Aspect Ratio */}
         <div className="relative w-full h-56 overflow-hidden rounded-t-2xl shrink-0">
           <Image
-            src={article.image}
-            alt={article.title}
+            src={article.meta.thumbnail}
+            alt={article.meta.title}
             fill
             className="object-cover object-center transition-transform duration-500 ease-out group-hover/card:scale-105"
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
@@ -118,12 +55,12 @@ function ArticleCard({
         <div className="flex flex-1 flex-col px-5 py-6 sm:px-6 sm:py-7">
           {/* Category Badge */}
           <div className={cn('mb-3 inline-flex w-fit rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wider transition-colors duration-300', categoryColor)}>
-            {article.category}
+            {article.meta.category}
           </div>
 
           {/* Article Title */}
           <h3 className="text-lg font-bold tracking-tight text-slate-900 mb-3 leading-snug line-clamp-3">
-            {article.title}
+            {article.meta.title}
           </h3>
 
           {/* Article Excerpt */}
@@ -135,7 +72,7 @@ function ArticleCard({
           <div className="flex items-center justify-between gap-3">
             <div className="flex items-center gap-1.5 text-xs text-slate-500">
               <Calendar className="w-4 h-4" />
-              <span>{article.date}</span>
+              <span>{article.meta.displayDate}</span>
             </div>
             <Link
               href={`/artikel/${article.slug}/`}
@@ -181,7 +118,7 @@ export default function ArtikelPage() {
           </h2>
           <ul className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8 lg:grid-cols-3">
             {ARTICLES.map((article, i) => (
-              <ArticleCard key={article.id} article={article} index={i} />
+              <ArticleCard key={article.slug} article={article} index={i} />
             ))}
           </ul>
         </div>
