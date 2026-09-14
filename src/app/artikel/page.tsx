@@ -3,30 +3,11 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import { PageHero } from '@/components/marketing/PageHero';
+import { ease } from '@/lib/motion';
 import { Card } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
 import { Calendar, ChevronRight } from 'lucide-react';
-
-const ease = [0.22, 1, 0.36, 1] as const;
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 24 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.55, ease },
-  },
-};
-
-const stagger = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.1, delayChildren: 0.08 },
-  },
-};
-
-const HERO_IMAGE = '/images/Hero/Hero-Artikel.webp';
 
 const ARTICLES = [
   {
@@ -184,56 +165,16 @@ export default function ArtikelPage() {
   return (
     <div className="min-h-0 bg-white">
       {/* Hero Section */}
-      <section
-        className="relative isolate flex min-h-[52vh] w-full items-end overflow-hidden md:min-h-[58vh] md:items-center"
-        aria-labelledby="artikel-hero-heading"
-      >
-        <div
-          className="absolute inset-0 -z-20 scale-105 bg-slate-900 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: `url('${HERO_IMAGE}')` }}
-          aria-hidden
-        />
-        <div
-          className="absolute inset-0 -z-10 bg-linear-to-br from-[#003d36]/88 via-[#00A88E]/50 to-slate-900/75"
-          aria-hidden
-        />
-        <div className="absolute inset-0 -z-10 bg-black/25" aria-hidden />
-
-        <div className="relative z-10 mx-auto w-full max-w-7xl px-5 pb-14 pt-28 sm:px-6 md:py-24 lg:px-8">
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            variants={stagger}
-            className="mx-auto max-w-3xl text-center md:mx-0 md:text-left"
-          >
-            <motion.p
-              variants={fadeUp}
-              className="text-sm font-medium uppercase tracking-[0.16em] text-[#a8f0e4]"
-            >
-              Alsakha Medica
-            </motion.p>
-            <motion.h1
-              id="artikel-hero-heading"
-              variants={fadeUp}
-              className="mt-3 text-balance text-4xl font-bold tracking-tight text-white sm:text-5xl md:text-6xl"
-            >
-              Artikel Kesehatan
-            </motion.h1>
-            <motion.p
-              variants={fadeUp}
-              className="mx-auto mt-5 max-w-2xl text-lg leading-relaxed text-white/90 sm:text-xl md:mx-0"
-            >
-              Informasi kesehatan terpercaya dari tim dokter Alsakha Medica untuk membantu Anda menjalani hidup lebih sehat.
-            </motion.p>
-            <motion.p
-              variants={fadeUp}
-              className="mt-6 inline-flex rounded-full border border-white/25 bg-white/10 px-4 py-2 text-sm font-medium text-white/95 backdrop-blur-sm"
-            >
-              &ldquo;Edukasi kesehatan adalah investasi terbaik untuk masa depan&rdquo;
-            </motion.p>
-          </motion.div>
-        </div>
-      </section>
+      <PageHero
+        image="/images/Hero/Hero-Artikel.webp"
+        labelledBy="artikel-hero-heading"
+        heading="Artikel Kesehatan"
+        description="Informasi kesehatan terpercaya dari tim dokter Alsakha Medica untuk membantu Anda menjalani hidup lebih sehat."
+        quote="“Edukasi kesehatan adalah investasi terbaik untuk masa depan”"
+        alignment="responsive-center"
+        descriptionWidth="wide"
+        quoteSpacing="large"
+      />
 
       {/* Articles Grid Section */}
       <section
@@ -251,7 +192,6 @@ export default function ArtikelPage() {
           </ul>
         </div>
       </section>
-
 
     </div>
   );
