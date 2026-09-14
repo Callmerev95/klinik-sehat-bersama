@@ -2,6 +2,7 @@ import Image from 'next/image';
 import { Mail, Phone } from 'lucide-react';
 
 import { HomeTopLink } from '@/components/navigation/HomeTopLink';
+import { CLINIC, SOCIAL_LINKS as SOCIAL, whatsapp } from '@/lib/site';
 import { cn } from '@/lib/utils';
 
 function IconFacebook({ className }: { className?: string }) {
@@ -28,15 +29,10 @@ function IconTikTok({ className }: { className?: string }) {
   );
 }
 
-const PHONE_DISPLAY = '+62 823-4256-1752';
-const PHONE_HREF = 'https://wa.me/6282342561752';
-const EMAIL = 'klinik.alsakha.medica90@gmail.com';
-const ADDRESS = 'Jl. Garuda No.138, Labuan Sumbawa, Labuhan Badas, Kabupaten Sumbawa, Nusa Tenggara Bar. 84316, Indonesia';
-
 const SOCIAL_LINKS = [
-  { name: 'Instagram', href: 'https://www.instagram.com/alsakha.medica?igsh=a2hudmZqdGZ6YWJw', Icon: IconInstagram },
-  { name: 'TikTok', href: 'https://www.tiktok.com/@klinik.alsakha.medica?_r=1&_t=ZS-96D9OfaY3Qg', Icon: IconTikTok },
-  { name: 'Facebook', href: 'https://www.facebook.com/share/1Ggk8e88KL/', Icon: IconFacebook },
+  { name: 'Instagram', href: SOCIAL.instagram, Icon: IconInstagram },
+  { name: 'TikTok', href: SOCIAL.tiktok, Icon: IconTikTok },
+  { name: 'Facebook', href: SOCIAL.facebook, Icon: IconFacebook },
 ] as const;
 
 const PARTNERS = [
@@ -85,23 +81,23 @@ export default function Footer() {
             </HomeTopLink>
 
             <div className="space-y-2">
-              <p className="text-xs leading-relaxed text-slate-400">{ADDRESS}</p>
+              <p className="text-xs leading-relaxed text-slate-400">{CLINIC.address}</p>
 
               <div className="flex flex-col gap-2.5">
                 <a
-                  href={PHONE_HREF}
+                  href={whatsapp()}
                   className="inline-flex items-center gap-2.5 rounded-lg text-slate-300 transition-colors hover:text-[#00A88E] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00A88E]/45 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
                 >
                   <Phone className="size-4 shrink-0 text-[#00A88E]" strokeWidth={2} aria-hidden />
-                  <span className="text-xs font-medium">{PHONE_DISPLAY}</span>
+                  <span className="text-xs font-medium">{CLINIC.phoneDisplay}</span>
                 </a>
 
                 <a
-                  href={`mailto:${EMAIL}`}
+                  href={`mailto:${CLINIC.email}`}
                   className="inline-flex items-center gap-2.5 rounded-lg text-slate-300 transition-colors hover:text-[#00A88E] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00A88E]/45 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
                 >
                   <Mail className="size-4 shrink-0 text-[#00A88E]" strokeWidth={2} aria-hidden />
-                  <span className="text-xs font-medium">{EMAIL}</span>
+                  <span className="text-xs font-medium">{CLINIC.email}</span>
                 </a>
               </div>
             </div>

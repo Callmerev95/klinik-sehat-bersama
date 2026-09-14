@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation';
 import { readFileSync } from 'fs';
 import { join } from 'path';
+import { whatsapp } from '@/lib/site';
 
 // Fallback component untuk artikel tanpa MDX
 function DefaultContent() {
@@ -210,7 +211,7 @@ export default async function ArtikelDetailPage({
             Dapatkan saran medis langsung dari tim dokter berpengalaman kami melalui WhatsApp
           </p>
           <a
-            href="https://wa.me/6282342561752?text=Halo%20Alsakha%20Medika%2C%20saya%20ingin%20berkonsultasi"
+            href={whatsapp('Halo Alsakha Medika, saya ingin berkonsultasi')}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-semibold text-[#003d36] bg-white hover:bg-slate-50 transition-colors duration-200"
