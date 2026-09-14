@@ -195,7 +195,18 @@ export default function Footer() {
         </div>
 
         <div className="mt-12 border-t border-white/10 pt-8 text-center text-xs text-slate-500 sm:text-sm">
-          <p>© {new Date().getFullYear()} Klinik Sehat Bersama. Hak cipta dilindungi.</p>
+          <p>
+            © {new Date().getFullYear()} Klinik Sehat Bersama. Hak cipta dilindungi.
+            Dikembangkan oleh{' '}
+            <a
+              href="https://callmerev.my.id"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-medium text-slate-400 transition-colors hover:text-teal-400"
+            >
+              Callmerev
+            </a>
+          </p>
         </div>
       </div>
     </footer>
