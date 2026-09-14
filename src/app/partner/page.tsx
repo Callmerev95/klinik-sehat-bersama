@@ -5,93 +5,15 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { PageHero } from '@/components/marketing/PageHero';
 import { ease, stagger } from '@/lib/motion';
+import {
+  CATEGORY_COLORS,
+  CATEGORY_LABELS,
+  PARTNERS,
+  type Partner,
+} from '@/data/partners';
 
 import { MotionCardFrame } from '@/components/marketing/MotionCardFrame';
 import { cn } from '@/lib/utils';
-
-interface Partner {
-  id: string;
-  name: string;
-  description: string;
-  image: string;
-  since: string;
-  category: 'insurance' | 'network' | 'corporate' | 'health';
-  slug?: string;
-}
-
-const PARTNERS: Partner[] = [
-  {
-    id: 'partner-1',
-    name: 'PT. Klinik Indosehat 2003',
-    description:
-      'Jaringan kesehatan terintegrasi di Indonesia yang menyediakan layanan healthcare comprehensive dengan standar internasional. Kami bangga menjadi bagian dari ekosistem kesehatan yang berkelanjutan.',
-    image: '/images/Partners/indosehat-2003.jpg',
-    since: '2020',
-    category: 'network',
-    slug: 'pt-indosehat-2003-group',
-  },
-  {
-    id: 'partner-2',
-    name: 'BPJS Kesehatan',
-    description:
-      'Badan Penyelenggara Jaminan Sosial Kesehatan yang memberikan perlindungan kesehatan bagi seluruh masyarakat Indonesia. Klinik kami tersertifikasi dan aktif melayani peserta BPJS Kesehatan.',
-    image: '/images/Partners/bpjs-kesehatan.jpg',
-    since: '2015',
-    category: 'insurance',
-    slug: 'bpjs-kesehatan',
-  },
-  {
-    id: 'partner-3',
-    name: 'BPJS Ketenagakerjaan',
-    description:
-      'Asuransi sosial untuk tenaga kerja yang memberikan perlindungan komprehensif. Alsakha Medica menjadi mitra terpercaya dalam program kesehatan ketenagakerjaan di kawasan Sumbawa.',
-    image: '/images/Partners/bpjs-ketenagakerjaan.jpg',
-    since: '2018',
-    category: 'insurance',
-    slug: 'bpjs-ketenagakerjaan',
-  },
-  {
-    id: 'partner-4',
-    name: 'Rumah Sakit Umum Daerah Sumbawa',
-    description:
-      'Rumah sakit rujukan utama di Kabupaten Sumbawa dengan fasilitas ICU dan spesialistik lengkap. Kami bekerja sama dalam sistem rujukan untuk penanganan kasus kompleks dan emergency.',
-    image: '/images/Partners/rsud-sumbawa.jpg',
-    since: '2016',
-    category: 'health',
-  },
-  {
-    id: 'partner-5',
-    name: 'Pemerintah Kabupaten Sumbawa',
-    description:
-      'Perangkat daerah kesehatan yang mendorong program kesehatan masyarakat. Klinik kami aktif berkontribusi dalam program imunisasi, MCU, dan surveilans kesehatan publik.',
-    image: '/images/Partners/pemkab-sumbawa.jpg',
-    since: '2014',
-    category: 'corporate',
-  },
-  {
-    id: 'partner-6',
-    name: 'Asuransi Korporat PT Tambang Emas',
-    description:
-      'Perusahaan pertambangan utama di Sumbawa yang mempercayai Alsakha Medica untuk program kesehatan karyawan dan keluarga. Kami menyediakan medical check-up berkala dan layanan konsultasi 24 jam.',
-    image: '/images/Partners/asuransi-korporat.jpg',
-    since: '2019',
-    category: 'corporate',
-  },
-];
-
-const CATEGORY_LABELS: Record<Partner['category'], string> = {
-  insurance: 'Asuransi',
-  network: 'Jaringan Kesehatan',
-  corporate: 'Korporat',
-  health: 'Kesehatan',
-};
-
-const CATEGORY_COLORS: Record<Partner['category'], string> = {
-  insurance: 'bg-blue-50 text-blue-700',
-  network: 'bg-teal-50 text-teal-700',
-  corporate: 'bg-purple-50 text-purple-700',
-  health: 'bg-green-50 text-green-700',
-};
 
 interface PartnerCardProps {
   partner: Partner;
@@ -143,7 +65,7 @@ function PartnerCard({ partner, index }: PartnerCardProps) {
           </p>
 
           {/* View Details Link */}
-          {partner.slug ? (
+          {partner.detail && (
             <Link
               href={`/partner/${partner.slug}`}
               className={cn(
@@ -154,17 +76,6 @@ function PartnerCard({ partner, index }: PartnerCardProps) {
               Selengkapnya
               <span className="text-base leading-none">→</span>
             </Link>
-          ) : (
-            <a
-              href="#"
-              className={cn(
-                'inline-flex items-center gap-1.5 text-sm font-semibold',
-                'text-slate-400 cursor-not-allowed'
-              )}
-            >
-              Selengkapnya
-              <span className="text-base leading-none">→</span>
-            </a>
           )}
         </div>
       </MotionCardFrame>

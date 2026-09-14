@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { ChevronRight } from 'lucide-react';
 import Link from 'next/link';
 import { whatsapp } from '@/lib/site';
+import type { Partner, PartnerDetailData } from '@/data/partners';
 
 // Animation variants
 const fadeUp = {
@@ -30,26 +31,8 @@ const containerVariants = {
   },
 };
 
-interface PartnerData {
-  id: string;
-  name: string;
-  logo: string;
-  shortDescription: string;
-  category: string;
-  fullDescription: string;
-  cooperationSince: string;
-  cooperationFields: string[];
-  benefitsForClinic: string[];
-  benefitsForPatients: string[];
-  documentation: Array<{
-    id: string;
-    image: string;
-    caption: string;
-  }>;
-}
-
 interface PartnerDetailContentProps {
-  partner: PartnerData;
+  partner: Partner & { detail: PartnerDetailData };
 }
 
 export function PartnerDetailContent({ partner }: PartnerDetailContentProps) {
@@ -72,7 +55,7 @@ export function PartnerDetailContent({ partner }: PartnerDetailContentProps) {
           >
             <div className="relative size-32 overflow-hidden rounded-2xl bg-slate-100 shadow-lg sm:size-40">
               <Image
-                src={partner.logo}
+                src={partner.detail.logo}
                 alt={partner.name}
                 fill
                 className="object-cover"
@@ -84,7 +67,7 @@ export function PartnerDetailContent({ partner }: PartnerDetailContentProps) {
           {/* Category Badge */}
           <motion.div variants={fadeUp} initial="hidden" animate="visible">
             <span className="inline-block rounded-full bg-[#a8f0e4] px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.12em] text-[#00A88E] sm:text-sm">
-              {partner.category}
+              {partner.detail.categoryLabel}
             </span>
           </motion.div>
 
@@ -107,7 +90,7 @@ export function PartnerDetailContent({ partner }: PartnerDetailContentProps) {
             custom={2}
             className="mx-auto mt-6 max-w-2xl text-pretty text-lg leading-relaxed text-slate-600 sm:mt-8 sm:text-xl"
           >
-            {partner.shortDescription}
+            {partner.detail.shortDescription}
           </motion.p>
 
           {/* Cooperation Badge */}
@@ -119,7 +102,7 @@ export function PartnerDetailContent({ partner }: PartnerDetailContentProps) {
             className="mt-8 flex flex-col items-center gap-2 sm:mt-10 sm:gap-3"
           >
             <p className="text-sm font-medium text-slate-500 sm:text-base">
-              Bermitra sejak <span className="font-semibold text-[#00A88E]">{partner.cooperationSince}</span>
+              Bermitra sejak <span className="font-semibold text-[#00A88E]">{partner.since}</span>
             </p>
           </motion.div>
         </div>
@@ -156,7 +139,7 @@ export function PartnerDetailContent({ partner }: PartnerDetailContentProps) {
             viewport={{ once: true }}
             className="text-pretty text-lg leading-relaxed text-slate-600 sm:text-lg"
           >
-            {partner.fullDescription}
+            {partner.detail.fullDescription}
           </motion.p>
 
           {/* Cooperation Fields & Benefits */}
@@ -170,7 +153,7 @@ export function PartnerDetailContent({ partner }: PartnerDetailContentProps) {
             <div>
               <h3 className="mb-4 text-xl font-semibold text-slate-900">Bidang Kerjasama</h3>
               <ul className="space-y-3">
-                {partner.cooperationFields.map((field, i) => (
+                {partner.detail.cooperationFields.map((field, i) => (
                   <motion.li key={i} variants={fadeUp} className="flex items-start gap-3 text-slate-600">
                     <span className="mt-1 inline-block size-2 shrink-0 rounded-full bg-[#00A88E]" />
                     <span>{field}</span>
@@ -187,7 +170,7 @@ export function PartnerDetailContent({ partner }: PartnerDetailContentProps) {
                     Untuk Klinik
                   </p>
                   <ul className="space-y-2">
-                    {partner.benefitsForClinic.map((benefit, i) => (
+                    {partner.detail.benefitsForClinic.map((benefit, i) => (
                       <li key={i} className="text-sm leading-relaxed text-slate-600">
                         • {benefit}
                       </li>
@@ -199,7 +182,7 @@ export function PartnerDetailContent({ partner }: PartnerDetailContentProps) {
                     Untuk Pasien
                   </p>
                   <ul className="space-y-2">
-                    {partner.benefitsForPatients.map((benefit, i) => (
+                    {partner.detail.benefitsForPatients.map((benefit, i) => (
                       <li key={i} className="text-sm leading-relaxed text-slate-600">
                         • {benefit}
                       </li>
