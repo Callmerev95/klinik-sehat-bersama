@@ -12,8 +12,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Alsakha Medica | Klinik Kesehatan Terpercaya di Sumbawa",
-  description: "Klinik Alsakha Medica menyediakan pelayanan kesehatan berkualitas dengan dokter berpengalaman dan fasilitas modern.",
+  title: "Klinik Sehat Bersama | Klinik Kesehatan Terpercaya di Kota Contoh",
+  description: "Klinik Sehat Bersama menyediakan pelayanan kesehatan berkualitas dengan dokter berpengalaman dan fasilitas modern.",
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any" },

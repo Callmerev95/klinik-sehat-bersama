@@ -12,46 +12,48 @@ export type GaleriFasilitasItem = {
   id: string;
   title: string;
   caption: string;
-  /** Unsplash — ganti URL saat foto aset klinik siap. */
+  /** Placeholder sementara — ganti URL saat foto aset klinik siap. */
   src: string;
 };
+
+const PLACEHOLDER_SRC = '/images/placeholder/facility.svg';
 
 const DEFAULT_ITEMS: GaleriFasilitasItem[] = [
   {
     id: 'tunggu',
     title: 'Ruang tunggu',
     caption: 'Area tunggu terang dengan alur jelas dan suasana tenang.',
-    src: '/images/Facilities/ruang-tunggu.webp',
+    src: PLACEHOLDER_SRC,
   },
   {
     id: 'periksa',
     title: 'Ruang periksa',
     caption: 'Konsultasi privat dengan pencahayaan alami dan privasi pasien.',
-    src: '/images/Facilities/ruang-periksa.webp',
+    src: PLACEHOLDER_SRC,
   },
   {
     id: 'laboratorium',
     title: 'Laboratorium',
     caption: 'Penunjang diagnostik dengan tata ruang higienis dan terkontrol.',
-    src: '/images/Facilities/laboratorium.webp',
+    src: PLACEHOLDER_SRC,
   },
   {
     id: 'resepsionis',
     title: 'Front desk',
     caption: 'Pendaftaran dan informasi layanan dalam satu titik koordinasi.',
-    src: '/images/Facilities/frontdesk.webp',
+    src: PLACEHOLDER_SRC,
   },
   {
     id: 'koridor',
     title: 'Koridor & navigasi',
     caption: 'Sirkulasi pasien yang mudah diikuti dan ramah difabilitas.',
-    src: '/images/Facilities/Koridor.webp',
+    src: PLACEHOLDER_SRC,
   },
   {
     id: 'penunjang',
     title: 'Ruang penunjang',
     caption: 'Zona penunjang medis modern untuk kenyamanan selama pemeriksaan.',
-    src: '/images/Facilities/ruang-penunjang.webp',
+    src: PLACEHOLDER_SRC,
   },
 ];
 

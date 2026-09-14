@@ -44,16 +44,16 @@ export async function generateMetadata({ params }: PartnerDetailPageProps) {
 
   if (!partner || !partner.detail) {
     return {
-      title: 'Mitra Tidak Ditemukan - Alsakha Medica',
-      description: 'Halaman mitra tidak ditemukan di website Alsakha Medica.',
+      title: 'Mitra Tidak Ditemukan - Klinik Sehat Bersama',
+      description: 'Halaman mitra tidak ditemukan di website Klinik Sehat Bersama.',
     };
   }
 
   return {
-    title: `${partner.name} - Mitra Alsakha Medica`,
+    title: `${partner.name} - Mitra Klinik Sehat Bersama`,
     description: partner.detail.shortDescription,
     openGraph: {
-      title: `${partner.name} - Mitra Alsakha Medica`,
+      title: `${partner.name} - Mitra Klinik Sehat Bersama`,
       description: partner.detail.shortDescription,
       url: `/partner/${slug}`,
       type: 'website',

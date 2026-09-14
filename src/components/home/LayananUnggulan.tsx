@@ -185,7 +185,7 @@ export function LayananUnggulan({ className, items = DEFAULT_LAYANAN }: LayananU
             Layanan Unggulan Kami
           </h2>
           <p className="mt-3 text-pretty text-base font-normal leading-relaxed text-slate-600 sm:text-lg">
-            Layanan inti Klinik Alsakha Medica — profesional, transparan, dan siap mendampingi Anda
+            Layanan inti Klinik Sehat Bersama — profesional, transparan, dan siap mendampingi Anda
             dari pemeriksaan rutin hingga penanganan darurat.
           </p>
         </div>

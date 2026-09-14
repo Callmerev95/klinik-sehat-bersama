@@ -115,10 +115,10 @@ export default function Navbar() {
             )}
           >
             <Image
-              src="/images/Logo/logo-alsakha.png"
-              alt="Alsakha Medica"
-              width={200}
-              height={60}
+              src="/images/Logo/logo-sehat-bersama.svg"
+              alt="Klinik Sehat Bersama — Sehat untuk Semua"
+              width={280}
+              height={72}
               className="h-auto w-28 transition-transform duration-300 ease-out group-hover:scale-105 sm:w-40 lg:w-48"
               priority
             />

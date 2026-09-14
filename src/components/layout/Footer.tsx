@@ -60,10 +60,10 @@ export default function Footer() {
               {/* Logo Icon */}
               <div className="shrink-0 transition-transform duration-300 group-hover:scale-110">
                 <Image
-                  src="/images/Icons/icons-alsakha.png"
-                  alt="Alsakha Medica icon"
-                  width={48}
-                  height={48}
+                  src="/images/Icons/icon-sehat-bersama.svg"
+                  alt="Ikon Klinik Sehat Bersama"
+                  width={96}
+                  height={96}
                   className="h-10 w-15 sm:h-14 sm:w-14"
                   priority
                 />
@@ -72,10 +72,10 @@ export default function Footer() {
               {/* Brand Text */}
               <div className="flex flex-col gap-0.5">
                 <p className="text-sm font-bold leading-tight text-white sm:text-base">
-                  Alsakha Medica
+                  {CLINIC.name}
                 </p>
                 <p className="text-xs leading-tight text-slate-400 sm:text-xs">
-                  Klinik & Medical Center
+                  {CLINIC.tagline}
                 </p>
               </div>
             </HomeTopLink>
@@ -119,7 +119,7 @@ export default function Footer() {
                       'hover:border-primary/50 hover:bg-primary/15 hover:text-[#a8f0e4] hover:scale-105',
                       'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950'
                     )}
-                    aria-label={`Alsakha Medica di ${name}`}
+                    aria-label={`Klinik Sehat Bersama di ${name}`}
                   >
                     <Icon className="size-4.5" />
                   </a>
@@ -195,7 +195,7 @@ export default function Footer() {
         </div>
 
         <div className="mt-12 border-t border-white/10 pt-8 text-center text-xs text-slate-500 sm:text-sm">
-          <p>© {new Date().getFullYear()} Alsakha Medica. Hak cipta dilindungi.</p>
+          <p>© {new Date().getFullYear()} Klinik Sehat Bersama. Hak cipta dilindungi.</p>
         </div>
       </div>
     </footer>

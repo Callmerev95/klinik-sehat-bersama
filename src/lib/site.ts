@@ -1,11 +1,12 @@
 export const CLINIC = {
-  name: 'Alsakha Medica',
-  tagline: 'Klinik & Medical Center',
-  phoneDisplay: '+62 823-4256-1752',
-  whatsappNumber: '6282342561752',
-  email: 'klinik.alsakha.medica90@gmail.com',
+  name: 'Klinik Sehat Bersama',
+  shortName: 'Sehat Bersama',
+  tagline: 'Sehat untuk Semua',
+  phoneDisplay: '+62 800-0000-0000',
+  whatsappNumber: '6280000000000',
+  email: 'halo@kliniksehatbersama.example.id',
   address:
-    'Jl. Garuda No.138, Labuhan Badas, Kabupaten Sumbawa, Nusa Tenggara Barat 84316, Indonesia',
+    'Jl. Contoh No. 00, Kota Contoh, Provinsi Contoh 00000, Indonesia',
 } as const;
 
 export function whatsapp(message?: string): string {
@@ -14,7 +15,7 @@ export function whatsapp(message?: string): string {
 }
 
 export const SOCIAL_LINKS = {
-  instagram: 'https://www.instagram.com/alsakha.medica?igsh=a2hudmZqdGZ6YWJw',
-  tiktok: 'https://www.tiktok.com/@klinik.alsakha.medica?_r=1&_t=ZS-96D9OfaY3Qg',
-  facebook: 'https://www.facebook.com/share/1Ggk8e88KL/',
+  instagram: '#',
+  tiktok: '#',
+  facebook: '#',
 } as const;

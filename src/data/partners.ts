@@ -47,7 +47,7 @@ export const PARTNERS: Partner[] = [
       shortDescription:
         'Mitra utama dalam pengembangan layanan kesehatan korporat dan komunitas di Nusa Tenggara Barat.',
       fullDescription:
-        'Klinik Alsakha Medica bermitra strategis dengan PT. Klinik Indosehat 2003 sejak awal berdirinya pada tahun 2018. Kerjasama ini mencakup pengembangan layanan kesehatan korporat, program medical check-up komprehensif, dan berbagai inisiatif kesehatan komunitas. Melalui sinergi dengan PT. Klinik Indosehat 2003, kami mampu memperluas jangkauan layanan kesehatan dan meningkatkan standar pelayanan medis di wilayah Sumbawa.',
+        'Klinik Sehat Bersama bermitra strategis dengan PT. Klinik Indosehat 2003 sejak awal berdirinya pada tahun 2018. Kerjasama ini mencakup pengembangan layanan kesehatan korporat, program medical check-up komprehensif, dan berbagai inisiatif kesehatan komunitas. Melalui sinergi dengan PT. Klinik Indosehat 2003, kami mampu memperluas jangkauan layanan kesehatan dan meningkatkan standar pelayanan medis di wilayah layanan.',
       cooperationFields: [
         'Layanan Medical Check-Up Korporat',
         'Program Kesehatan Karyawan',
@@ -71,7 +71,7 @@ export const PARTNERS: Partner[] = [
         {
           id: '1',
           image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=600&fit=crop',
-          caption: 'Pertemuan Strategis Tim Klinik Alsakha Medica dan PT. Klinik Indosehat 2003',
+          caption: 'Pertemuan Strategis Tim Klinik Sehat Bersama dan PT. Klinik Indosehat 2003',
         },
         {
           id: '2',
@@ -115,7 +115,7 @@ export const PARTNERS: Partner[] = [
       categoryLabel: 'Government Partner',
       shortDescription: 'Mitra resmi dalam memberikan layanan kesehatan dasar kepada peserta JKN-KIS.',
       fullDescription:
-        'Sebagai fasilitas kesehatan tingkat pertama yang terakreditasi, Klinik Alsakha Medica bermitra dengan BPJS Kesehatan untuk memberikan akses layanan kesehatan kepada seluruh peserta Jaminan Kesehatan Nasional (JKN) dan Kartu Indonesia Sehat (KIS). Komitmen kami adalah memberikan pelayanan kesehatan yang bermutu, terjangkau, dan sesuai dengan standar yang ditetapkan oleh BPJS Kesehatan.',
+        'Sebagai fasilitas kesehatan tingkat pertama yang terakreditasi, Klinik Sehat Bersama bermitra dengan BPJS Kesehatan untuk memberikan akses layanan kesehatan kepada seluruh peserta Jaminan Kesehatan Nasional (JKN) dan Kartu Indonesia Sehat (KIS). Komitmen kami adalah memberikan pelayanan kesehatan yang bermutu, terjangkau, dan sesuai dengan standar yang ditetapkan oleh BPJS Kesehatan.',
       cooperationFields: [
         'Layanan Kesehatan Dasar JKN-KIS',
         'Pemeriksaan Kesehatan Berkelanjutan',
@@ -174,7 +174,7 @@ export const PARTNERS: Partner[] = [
     slug: 'bpjs-ketenagakerjaan',
     name: 'BPJS Ketenagakerjaan',
     description:
-      'Asuransi sosial untuk tenaga kerja yang memberikan perlindungan komprehensif. Alsakha Medica menjadi mitra terpercaya dalam program kesehatan ketenagakerjaan di kawasan Sumbawa.',
+      'Asuransi sosial untuk tenaga kerja yang memberikan perlindungan komprehensif. Sehat Bersama menjadi mitra terpercaya dalam program kesehatan ketenagakerjaan di wilayah layanan.',
     image: '/images/Partners/bpjs-ketenagakerjaan.jpg',
     since: '2020',
     category: 'insurance',
@@ -184,7 +184,7 @@ export const PARTNERS: Partner[] = [
       shortDescription:
         'Kemitraan dalam penyediaan layanan kesehatan dan keselamatan kerja bagi peserta program asuransi ketenagakerjaan.',
       fullDescription:
-        'Klinik Alsakha Medica berperan sebagai fasilitas kesehatan provider BPJS Ketenagakerjaan yang menyediakan layanan kesehatan dan keselamatan kerja untuk peserta program Jaminan Kecelakaan Kerja (JKK), Jaminan Hari Tua (JHT), dan Jaminan Pensiun (JP). Tim medis kami terlatih dalam penanganan kasus-kasus occupational health dan siap memberikan penanganan pertama dalam situasi darurat akibat kecelakaan kerja.',
+        'Klinik Sehat Bersama berperan sebagai fasilitas kesehatan provider BPJS Ketenagakerjaan yang menyediakan layanan kesehatan dan keselamatan kerja untuk peserta program Jaminan Kecelakaan Kerja (JKK), Jaminan Hari Tua (JHT), dan Jaminan Pensiun (JP). Tim medis kami terlatih dalam penanganan kasus-kasus occupational health dan siap memberikan penanganan pertama dalam situasi darurat akibat kecelakaan kerja.',
       cooperationFields: [
         'Layanan Medical Check-Up Pre-Employment',
         'Penanganan Kasus Kecelakaan Kerja',
@@ -243,7 +243,7 @@ export const PARTNERS: Partner[] = [
     slug: 'rsud-sumbawa',
     name: 'Rumah Sakit Umum Daerah Sumbawa',
     description:
-      'Rumah sakit rujukan utama di Kabupaten Sumbawa dengan fasilitas ICU dan spesialistik lengkap. Kami bekerja sama dalam sistem rujukan untuk penanganan kasus kompleks dan emergency.',
+      'Rumah sakit rujukan utama di wilayah layanan dengan fasilitas ICU dan spesialistik lengkap. Kami bekerja sama dalam sistem rujukan untuk penanganan kasus kompleks dan emergency.',
     image: '/images/Partners/rsud-sumbawa.jpg',
     since: '2016',
     category: 'health',
@@ -263,7 +263,7 @@ export const PARTNERS: Partner[] = [
     slug: 'asuransi-korporat-tambang-emas',
     name: 'Asuransi Korporat PT Tambang Emas',
     description:
-      'Perusahaan pertambangan utama di Sumbawa yang mempercayai Alsakha Medica untuk program kesehatan karyawan dan keluarga. Kami menyediakan medical check-up berkala dan layanan konsultasi 24 jam.',
+      'Perusahaan pertambangan utama di wilayah layanan yang mempercayai Sehat Bersama untuk program kesehatan karyawan dan keluarga. Kami menyediakan medical check-up berkala dan layanan konsultasi 24 jam.',
     image: '/images/Partners/asuransi-korporat.jpg',
     since: '2019',
     category: 'corporate',

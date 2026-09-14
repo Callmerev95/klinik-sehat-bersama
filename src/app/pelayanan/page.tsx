@@ -44,7 +44,7 @@ const LAYANAN: readonly PelayananItem[] = [
     icon: Activity,
     title: 'Medical Check-Up',
     description:
-      'Paket pemeriksaan kesehatan lengkap untuk skrining berkala — penunjang disesuaikan standar klinik, dengan penawaran harga kompetitif (Best Price) sesuai brosur Alsakha Medica. Hasil dibahas agar Anda memahami langkah pencegahan dan tindak lanjut yang tepat.',
+      'Paket pemeriksaan kesehatan lengkap untuk skrining berkala — penunjang disesuaikan standar klinik, dengan penawaran harga kompetitif (Best Price) sesuai brosur Klinik Sehat Bersama. Hasil dibahas agar Anda memahami langkah pencegahan dan tindak lanjut yang tepat.',
     highlights: [
       'Paket lengkap sesuai kebutuhan usia dan risiko kesehatan',
       'Integrasi dengan laboratorium & penunjang di klinik',
@@ -219,7 +219,7 @@ export default function PelayananPage() {
         image="/images/Hero/Hero-Pelayanan.webp"
         labelledBy="pelayanan-hero-heading"
         heading="Pelayanan Kami"
-        description="Informasi layanan resmi Klinik Alsakha Medica — terpadu, transparan, dan siap mendampingi Anda dari pemeriksaan rutin hingga penanganan darurat."
+        description="Informasi layanan resmi Klinik Sehat Bersama — terpadu, transparan, dan siap mendampingi Anda dari pemeriksaan rutin hingga penanganan darurat."
         quote="“Setia Dikala Sehat – Peduli Dikala Sakit”"
         alignment="responsive-center"
         descriptionWidth="wide"

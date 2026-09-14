@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Tentang Kami | Alsakha Medica',
+  title: 'Tentang Kami | Klinik Sehat Bersama',
   description:
-    'Profil Klinik Alsakha Medica: visi, misi, kolaborasi PT. Klinik Indosehat 2003, lokasi cabang di Sumbawa, keunggulan layanan, dan janji pelayanan.',
+    'Profil Klinik Sehat Bersama: visi, misi, kolaborasi mitra kesehatan, lokasi cabang, keunggulan layanan, dan janji pelayanan.',
 };
 
 export default function TentangKamiLayout({ children }: { children: React.ReactNode }) {

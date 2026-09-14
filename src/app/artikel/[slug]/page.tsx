@@ -36,11 +36,11 @@ export async function generateMetadata({ params }: ArtikelDetailPageProps) {
   const article = getArticle(slug);
 
   if (!article) {
-    return { title: 'Artikel Tidak Ditemukan - Alsakha Medica' };
+    return { title: 'Artikel Tidak Ditemukan - Klinik Sehat Bersama' };
   }
 
   return {
-    title: `${article.meta.title} - Artikel Alsakha Medica`,
+    title: `${article.meta.title} - Artikel Klinik Sehat Bersama`,
     description: article.excerpt,
   };
 }
@@ -92,7 +92,7 @@ export default async function ArtikelDetailPage({ params }: ArtikelDetailPagePro
             Dapatkan saran medis langsung dari tim dokter berpengalaman kami melalui WhatsApp
           </p>
           <a
-            href={whatsapp('Halo Alsakha Medica, saya ingin berkonsultasi')}
+            href={whatsapp('Halo Klinik Sehat Bersama, saya ingin berkonsultasi')}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-semibold text-[#003d36] bg-white hover:bg-slate-50 transition-colors duration-200"

@@ -234,7 +234,7 @@ export function PartnerDetailContent({ partner }: PartnerDetailContentProps) {
           >
             <motion.a
               variants={item}
-              href={whatsapp('Halo, saya tertarik untuk berkerjasama dengan Klinik Alsakha Medica')}
+              href={whatsapp('Halo, saya tertarik untuk berkerjasama dengan Klinik Sehat Bersama')}
               className="group inline-flex items-center justify-center gap-2 rounded-lg bg-primary px-8 py-3.5 font-medium text-white transition-[color,background-color,transform] duration-200 hover:bg-primary-deep hover:scale-105 active:scale-0.96 sm:px-10"
               target="_blank"
               rel="noopener noreferrer"

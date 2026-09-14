@@ -230,10 +230,10 @@ export default function NotFound() {
           <p>
             Butuh bantuan? Hubungi kami di{' '}
             <a
-              href="tel:+6282342561752"
+              href="tel:+6280000000000"
               className="text-primary hover:underline hover:decoration-from-font hover:[text-underline-position:from-font] underline-offset-4 font-medium transition-colors"
             >
-              +62 823-4256-1752
+              +62 800-0000-0000
             </a>
           </p>
         </motion.div>

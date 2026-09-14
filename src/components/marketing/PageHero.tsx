@@ -58,7 +58,7 @@ export function PageHero({
             variants={item}
             className="text-sm font-medium uppercase tracking-[0.16em] text-[#a8f0e4]"
           >
-            Alsakha Medica
+            Sehat Bersama
           </motion.p>
           <motion.h1
             id={labelledBy}

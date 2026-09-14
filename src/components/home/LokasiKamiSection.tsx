@@ -4,19 +4,19 @@ import { ChevronRight, Clock, Mail, MapPin, Phone } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 /**
- * Embed peta cabang utama (Labuhan Badas).
+ * Embed peta cabang utama (Kota Contoh).
  * Ganti dengan kode embed resmi Google Maps (Share → Embed) bila sudah tersedia.
  */
 const MAP_EMBED_SRC =
-  'https://maps.google.com/maps?q=Klinik+Alsakha+Medica,+Jl.+Garuda+No.138,+Labuhan+Badas,+Sumbawa+Besar,+Nusa+Tenggara+Barat&hl=id&z=16&output=embed';
+  'https://maps.google.com/maps?q=Kota+Contoh&hl=id&z=13&output=embed';
 
 /** Samakan dengan Navbar / Footer saat nomor & email final. */
-const PHONE_DISPLAY = '+62 823-4256-1752';
-const PHONE_HREF = 'tel:+6282342561752';
-const EMAIL = 'klinik.alsakha.medica90@gmail.com';
+const PHONE_DISPLAY = '+62 800-0000-0000';
+const PHONE_HREF = 'tel:+6280000000000';
+const EMAIL = 'halo@kliniksehatbersama.example.id';
 
 const CABANG_UTAMA_LINE =
-  'Jl. Garuda No.138, Labuhan Badas, Sumbawa Besar — Klinik Alsakha Medica';
+  'Jl. Contoh No. 00, Kota Contoh — Klinik Sehat Bersama';
 
 export function LokasiKamiSection() {
   return (
@@ -34,7 +34,7 @@ export function LokasiKamiSection() {
             Lokasi &amp; Kontak
           </h2>
           <p className="mt-3 text-pretty text-base leading-relaxed text-slate-600 sm:mt-4 sm:text-lg">
-            Temukan lokasi kami dan hubungi tim Alsakha Medica dengan mudah. Kami siap melayani Anda
+            Temukan lokasi kami dan hubungi tim Sehat Bersama dengan mudah. Kami siap melayani Anda
             kapan saja.
           </p>
         </header>
@@ -69,7 +69,7 @@ export function LokasiKamiSection() {
                 )}
               >
                 <iframe
-                  title="Peta Google Maps — Klinik Alsakha Medica, Labuhan Badas, Sumbawa Besar"
+                  title="Peta Google Maps — Klinik Sehat Bersama, Kota Contoh"
                   src={MAP_EMBED_SRC}
                   className="absolute inset-0 h-full w-full border-0"
                   loading="lazy"

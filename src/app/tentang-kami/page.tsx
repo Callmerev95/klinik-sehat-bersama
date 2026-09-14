@@ -21,18 +21,18 @@ import { cn } from '@/lib/utils';
 const CABANG = [
   {
     id: 'cabang-1',
-    name: 'Cabang Sumbawa Besar',
-    address: 'Jl. Garuda No.138, Labuhan Badas, Sumbawa Besar',
+    name: 'Cabang Kota Contoh',
+    address: 'Jl. Contoh No. 00, Kelurahan Contoh, Kota Contoh',
   },
   {
     id: 'cabang-2',
-    name: 'Cabang Maluk',
-    address: 'Jl. Batu Hijau Pasir Putih No.46, Kec. Maluk, Kab. Sumbawa Barat',
+    name: 'Cabang Contoh Utara',
+    address: 'Jl. Percontohan No. 10, Kec. Contoh Utara, Kab. Contoh',
   },
   {
     id: 'cabang-3',
-    name: 'Cabang Lunyuk',
-    address: 'Desa Padasuka RT.002/RW.001, Kec. Lunyuk, Kab. Sumbawa',
+    name: 'Cabang Contoh Selatan',
+    address: 'Jl. Teladan No. 20, Kec. Contoh Selatan, Kab. Contoh',
   },
 ] as const;
 
@@ -46,7 +46,7 @@ const KEUNGGULAN = [
   {
     icon: MapPin,
     title: 'Lokasi yang Strategis',
-    text: 'Berlokasi di Jl. Garuda No. 138 Desa Labuhan Sumbawa, terletak strategis di pusat pasar Labuhan Sumbawa, dekat Masjid Jami Nurul Maqbullah, dan area pariwisata Jempol.',
+    text: 'Berlokasi di Jl. Contoh No. 00, terletak strategis di pusat Kota Contoh, dekat dengan fasilitas umum dan area publik.',
   },
   {
     icon: HeartHandshake,
@@ -66,12 +66,12 @@ const KEUNGGULAN = [
   {
     icon: ShieldCheck,
     title: 'Jaringan Perusahaan Luas',
-    text: 'Memiliki hubungan baik dengan berbagai perusahaan di Kabupaten Sumbawa yang bermanfaat untuk kerjasama dalam pelayanan kesehatan tenaga kerja.',
+    text: 'Memiliki hubungan baik dengan berbagai perusahaan di wilayah layanan yang bermanfaat untuk kerjasama dalam pelayanan kesehatan tenaga kerja.',
   },
   {
     icon: Microscope,
     title: 'Satu-satunya Klinik Tersertifikasi',
-    text: 'Merupakan satu-satunya klinik di Kabupaten Sumbawa yang memiliki SKP KEMNAKER untuk pemeriksaan pelayanan kesehatan tenaga kerja dan SMK3.',
+    text: 'Merupakan klinik tersertifikasi untuk pemeriksaan pelayanan kesehatan tenaga kerja dan SMK3.',
   },
   {
     icon: UserRound,
@@ -86,7 +86,7 @@ const KEUNGGULAN = [
   {
     icon: Target,
     title: 'Kolaborasi Pendidikan',
-    text: 'Bekerja sama dengan Sekolah Kesehatan di Kabupaten Sumbawa dalam program peningkatan kualitas pendidikan kesehatan.',
+    text: 'Bekerja sama dengan sekolah kesehatan di wilayah layanan dalam program peningkatan kualitas pendidikan kesehatan.',
   },
   {
     icon: Sparkles,
@@ -233,10 +233,10 @@ export default function TentangKamiPage() {
               Sejarah singkat & lokasi
             </h2>
             <p className="mt-5 text-[1.0625rem] leading-relaxed text-slate-600">
-              <strong className="font-semibold text-slate-800">Klinik Alsakha Medica</strong> berdiri sejak{' '}
+              <strong className="font-semibold text-slate-800">Klinik Sehat Bersama</strong> berdiri sejak{' '}
               <strong className="font-semibold text-primary">2018</strong>, berkembang bersama mitra{' '}
-              <strong className="font-semibold text-slate-800">PT. Klinik Indosehat 2003</strong> untuk melayani
-              kebutuhan kesehatan perusahaan dan masyarakat di wilayah Sumbawa dengan standar yang jelas.
+              <strong className="font-semibold text-slate-800">jaringan klinik rekanan</strong> untuk melayani
+              kebutuhan kesehatan perusahaan dan masyarakat di wilayah layanan dengan standar yang jelas.
             </p>
           </motion.div>
 

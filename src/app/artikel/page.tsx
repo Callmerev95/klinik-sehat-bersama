@@ -101,7 +101,7 @@ export default function ArtikelPage() {
         image="/images/Hero/Hero-Artikel.webp"
         labelledBy="artikel-hero-heading"
         heading="Artikel Kesehatan"
-        description="Informasi kesehatan terpercaya dari tim dokter Alsakha Medica untuk membantu Anda menjalani hidup lebih sehat."
+        description="Informasi kesehatan terpercaya dari tim dokter Klinik Sehat Bersama untuk membantu Anda menjalani hidup lebih sehat."
         quote="“Edukasi kesehatan adalah investasi terbaik untuk masa depan”"
         alignment="responsive-center"
         descriptionWidth="wide"

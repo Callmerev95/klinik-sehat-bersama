@@ -93,7 +93,7 @@ export default function PartnerPage() {
         image="/images/Hero/Hero-Partner.jpeg"
         labelledBy="partner-hero-heading"
         heading="Mitra Kami"
-        description="Kerjasama strategis dengan institusi terpercaya memastikan kami memberikan layanan kesehatan terbaik untuk seluruh masyarakat Sumbawa dan sekitarnya."
+        description="Kerjasama strategis dengan institusi terpercaya memastikan kami memberikan layanan kesehatan terbaik untuk seluruh masyarakat di wilayah layanan dan sekitarnya."
         quote="“Bersama membangun ekosistem kesehatan yang berkelanjutan”"
         alignment="left"
         descriptionWidth="narrow"
@@ -118,7 +118,7 @@ export default function PartnerPage() {
               Kemitraan Strategis
             </h2>
             <p className="mt-4 text-pretty text-base leading-relaxed text-slate-600 sm:text-lg">
-              Bersama mitra kami, Alsakha Medica terus berkembang untuk memberikan akses kesehatan yang lebih baik.
+              Bersama mitra kami, Klinik Sehat Bersama terus berkembang untuk memberikan akses kesehatan yang lebih baik.
             </p>
           </motion.div>
 

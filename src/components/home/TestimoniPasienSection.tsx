@@ -14,28 +14,28 @@ export type TestimoniItem = {
 
 const DEFAULT_TESTIMONI: TestimoniItem[] = [
   {
-    id: 'rina',
-    nameAge: 'Ibu Rina, 42 tahun',
+    id: 'contoh-a',
+    nameAge: 'Ibu Contoh A, 40 tahun',
     quote:
       'Dokter dan perawat menjelaskan dengan sabar. Suasana klinik tenang sehingga saya tidak merasa gugup saat kontrol berkala.',
     rating: 5,
-    imageSrc: '/images/testimoni/ibu-rina.jpg',
+    imageSrc: '/images/placeholder/person.svg',
   },
   {
-    id: 'agus',
-    nameAge: 'Bapak Agus, 55 tahun',
+    id: 'contoh-b',
+    nameAge: 'Bapak Contoh B, 50 tahun',
     quote:
       'Ruang tunggu rapi dan antrian terasa adil. Saya merasa diperlakukan hormat dari pendaftaran hingga selesai pemeriksaan.',
     rating: 5,
-    imageSrc: '/images/testimoni/bapak-agus.jpg',
+    imageSrc: '/images/placeholder/person.svg',
   },
   {
-    id: 'sari',
-    nameAge: 'Ibu Sari, 38 tahun',
+    id: 'contoh-c',
+    nameAge: 'Ibu Contoh C, 35 tahun',
     quote:
       'Medical Check-Up berjalan terarah; hasilnya dijelaskan tanpa istilah yang membingungkan. Sangat cocok untuk keluarga.',
     rating: 4.5,
-    imageSrc: '/images/testimoni/ibu-sari.jpg',
+    imageSrc: '/images/placeholder/person.svg',
   },
 ];
 
@@ -145,7 +145,7 @@ export function TestimoniPasienSection({ className, items = DEFAULT_TESTIMONI }:
             Apa Kata Mereka
           </h2>
           <p className="mx-auto mt-5 max-w-xl text-pretty text-base leading-relaxed text-slate-600 sm:mt-6 sm:text-lg">
-            Cerita singkat dari mereka yang telah mempercayakan kesehatan keluarga kepada tim Alsakha Medica
+            Cerita singkat dari mereka yang telah mempercayakan kesehatan keluarga kepada tim Sehat Bersama
           </p>
         </header>
 

@@ -159,7 +159,7 @@ export function ArtikelTerbaruSection() {
             variants={item}
             className="mx-auto mt-5 max-w-xl text-pretty text-base leading-relaxed text-slate-600 sm:mt-6 sm:text-lg"
           >
-            Informasi kesehatan terkini dari tim dokter Alsakha Medica
+            Informasi kesehatan terkini dari tim dokter Klinik Sehat Bersama
           </motion.p>
         </motion.header>
 
