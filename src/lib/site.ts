@@ -1,3 +1,5 @@
+export const SITE_URL = 'https://klinik-sehat-bersama.callmerev.my.id';
+
 export const CLINIC = {
   name: 'Klinik Sehat Bersama',
   shortName: 'Sehat Bersama',

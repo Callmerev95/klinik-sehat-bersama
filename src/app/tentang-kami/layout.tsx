@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Tentang Kami | Klinik Sehat Bersama',
+  title: "Tentang Kami",
+  alternates: { canonical: "/tentang-kami/" },
   description:
     'Profil Klinik Sehat Bersama: visi, misi, kolaborasi mitra kesehatan, lokasi cabang, keunggulan layanan, dan janji pelayanan.',
 };

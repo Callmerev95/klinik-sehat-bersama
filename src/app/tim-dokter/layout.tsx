@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Tim Dokter | Klinik Sehat Bersama',
+  title: "Tim Dokter",
+  alternates: { canonical: "/tim-dokter/" },
   description:
     'Profil dokter Klinik Sehat Bersama: daftar dokter spesialis dengan pengalaman dan layanan klinik yang profesional.',
 };

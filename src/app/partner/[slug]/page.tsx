@@ -50,21 +50,15 @@ export async function generateMetadata({ params }: PartnerDetailPageProps) {
   }
 
   return {
-    title: `${partner.name} - Mitra Klinik Sehat Bersama`,
+    title: partner.name,
     description: partner.detail.shortDescription,
+    alternates: { canonical: `/partner/${slug}/` },
     openGraph: {
       title: `${partner.name} - Mitra Klinik Sehat Bersama`,
       description: partner.detail.shortDescription,
-      url: `/partner/${slug}`,
+      url: `/partner/${slug}/`,
       type: 'website',
-      images: [
-        {
-          url: partner.detail.logo,
-          width: 1200,
-          height: 630,
-          alt: partner.name,
-        },
-      ],
+      images: [{ url: partner.detail.logo, alt: partner.name }],
     },
   };
 }

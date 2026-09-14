@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Pelayanan | Klinik Sehat Bersama',
+  title: "Pelayanan",
+  alternates: { canonical: "/pelayanan/" },
   description:
     'Layanan kesehatan Klinik Sehat Bersama sesuai brosur resmi: Medical Check-Up, poli umum, IGD 24 jam, laboratorium, USG, rawat inap, audiometri, EKG, treadmill, farmasi, KIA, dan BPJS.',
 };

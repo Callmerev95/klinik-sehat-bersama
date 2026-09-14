@@ -40,8 +40,18 @@ export async function generateMetadata({ params }: ArtikelDetailPageProps) {
   }
 
   return {
-    title: `${article.meta.title} - Artikel Klinik Sehat Bersama`,
+    title: article.meta.title,
     description: article.excerpt,
+    alternates: { canonical: `/artikel/${slug}/` },
+    openGraph: {
+      title: article.meta.title,
+      description: article.excerpt,
+      url: `/artikel/${slug}/`,
+      type: 'article',
+      publishedTime: article.meta.date,
+      authors: [article.meta.author],
+      images: [{ url: article.meta.thumbnail, alt: article.meta.title }],
+    },
   };
 }
 
