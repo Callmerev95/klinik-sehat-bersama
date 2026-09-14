@@ -2,9 +2,8 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
 import { PageHero } from '@/components/marketing/PageHero';
-import { ease } from '@/lib/motion';
+import { MotionCardFrame } from '@/components/marketing/MotionCardFrame';
 import { Card } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
 import { Calendar, ChevronRight } from 'lucide-react';
@@ -93,20 +92,16 @@ function ArticleCard({
   const categoryColor = categoryColors[article.category] || 'bg-slate-50 text-slate-700';
 
   return (
-    <motion.li
-      className="h-full scroll-mt-24"
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-30px' }}
-      transition={{ duration: 0.45, ease, delay: index * 0.06 }}
+    <MotionCardFrame
+      index={index}
+      as="li"
+      shellAs={Card}
+      variant="flat"
+      initialY={20}
+      viewportMargin="-30px"
+      delayStep={0.06}
+      wrapperClassName="scroll-mt-24"
     >
-      <Card
-        className={cn(
-          'group/card flex h-full flex-col overflow-hidden border border-slate-200 bg-white shadow-sm',
-          'transition-all duration-300',
-          'hover:shadow-lg hover:border-[#00A88E]/60 p-0'
-        )}
-      >
         {/* Article Thumbnail Section - 16:9 Aspect Ratio */}
         <div className="relative w-full h-56 overflow-hidden rounded-t-2xl shrink-0">
           <Image
@@ -156,8 +151,7 @@ function ArticleCard({
             </Link>
           </div>
         </div>
-      </Card>
-    </motion.li>
+    </MotionCardFrame>
   );
 }
 

@@ -3,7 +3,8 @@
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { PageHero } from '@/components/marketing/PageHero';
-import { ease, stagger } from '@/lib/motion';
+import { stagger } from '@/lib/motion';
+import { MotionCardFrame } from '@/components/marketing/MotionCardFrame';
 import { cn } from '@/lib/utils';
 
 const DOCTORS = [
@@ -51,24 +52,7 @@ function DoctorCard({ doctor, index }: { doctor: (typeof DOCTORS)[number]; index
   )}`;
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-50px' }}
-      transition={{
-        duration: 0.45,
-        ease,
-        delay: index * 0.08,
-      }}
-      className="h-full"
-    >
-      <article
-        className={cn(
-          'card-hover flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200/80',
-          'bg-white shadow-[0_1px_3px_rgb(15_23_42/0.06)] transition-all duration-300',
-          'hover:border-[#00A88E]/40 hover:shadow-lg hover:shadow-[#00A88E]/10'
-        )}
-      >
+    <MotionCardFrame index={index}>
         {/* Doctor Photo Section - Portrait */}
         <div className="relative w-full overflow-hidden bg-slate-100" style={{ aspectRatio: '3/4' }}>
           <Image
@@ -123,8 +107,7 @@ function DoctorCard({ doctor, index }: { doctor: (typeof DOCTORS)[number]; index
             Lihat Jadwal & Hubungi
           </a>
         </div>
-      </article>
-    </motion.div>
+      </MotionCardFrame>
   );
 }
 
