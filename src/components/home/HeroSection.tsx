@@ -38,7 +38,7 @@ export function HeroSection() {
       aria-labelledby="hero-heading"
     >
       <div
-        className="absolute inset-0 -z-20 scale-105 bg-slate-900 bg-cover bg-center bg-no-repeat"
+        className="absolute inset-0 -z-20 scale-105 bg-slate-900 bg-cover bg-no-repeat bg-position[:50%_0%]"
         style={{ backgroundImage: `url('${HERO_IMAGE}')` }}
         aria-hidden
       />
